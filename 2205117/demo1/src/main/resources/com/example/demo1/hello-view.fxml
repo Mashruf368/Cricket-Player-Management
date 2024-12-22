@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.demo1.HelloController">
+    <!-- Title at the top -->
+    <Text fx:id="welcomeText" text="Welcome to the club" style="-fx-font-size: 24px; -fx-font-weight: bold;"
+          AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20"/>
+
+    <!-- Username Display (Dynamic) -->
+    <Text fx:id="usernameText" text="" style="-fx-font-size: 18px;"
+          AnchorPane.topAnchor="60" AnchorPane.leftAnchor="20"/>
+
+    <!-- Left side buttons -->
+    <Button text="Show My Players" fx:id="showPlayersButton"
+            AnchorPane.topAnchor="100" AnchorPane.leftAnchor="20"/>
+    <Button text="Club Details" fx:id="clubDetailsButton"
+            AnchorPane.topAnchor="140" AnchorPane.leftAnchor="20"/>
+
+    <!-- Right side buttons -->
+    <Button text="Sell Players" fx:id="sellPlayersButton"
+            AnchorPane.topAnchor="100" AnchorPane.rightAnchor="20"/>
+    <Button text="Buy Players" fx:id="buyPlayersButton"
+            AnchorPane.topAnchor="140" AnchorPane.rightAnchor="20"/>
+</AnchorPane>
