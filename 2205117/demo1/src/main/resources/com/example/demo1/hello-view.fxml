@@ -15,7 +15,7 @@
 
     <!-- Left side buttons -->
     <Button text="Show My Players" fx:id="showPlayersButton"
-            AnchorPane.topAnchor="100" AnchorPane.leftAnchor="20"/>
+            AnchorPane.topAnchor="100" AnchorPane.leftAnchor="20" onAction="#showPlayers"/>
     <Button text="Club Details" fx:id="clubDetailsButton"
             AnchorPane.topAnchor="140" AnchorPane.leftAnchor="20"/>
 
