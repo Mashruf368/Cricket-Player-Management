@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import com.example.demo1.Database.*;
+import com.example.demo1.Clubs.*;
+
 
 public class Server {
     private static final int PORT = 12345;
@@ -15,16 +18,35 @@ public class Server {
     // Hardcoded credentials
     private static final Map<String, String> credentials = new HashMap<>();
     private static final Map<String, ArrayList<Integer>> playerData = new HashMap<>(); // Maps usernames to player lists
+    private static final Map<String, ArrayList<Player>> alldata = new HashMap<>();
 
     static {
         // Hardcoded credentials in the server
+        PlayerList.makelist();
+
+
         credentials.put("one", "12");
         credentials.put("Mumbai Indians", "mi12");
         credentials.put("Royal Challengers Bangalore", "rcb12");
+        credentials.put("Kolkata Knight Riders", "kkr12");
+        credentials.put("Delhi Capitals", "dc12");
+
+        Club r = new Club("Mumbai Indians");
+        alldata.put("Mumbai Indians", new ArrayList<>(r.formclub()));
+        r = new Club("Royal Challengers Bangalore");
+        alldata.put("Royal Challengers Bangalore",new ArrayList<>(r.formclub()));
+         r = new Club("Delhi Capitals");
+        alldata.put("Delhi Capitals", new ArrayList<>(r.formclub()));
+        r = new Club("Kolkata Knight Riders");
+        alldata.put("Kolkata Knight Riders",new ArrayList<>(r.formclub()));
+
+
 
         playerData.put("one", new ArrayList<>(List.of(1, 2, 3, 4)));
         playerData.put("Mumbai Indians", new ArrayList<>(List.of(10, 20, 30, 40)));
         playerData.put("Royal Challengers Bangalore", new ArrayList<>(List.of(100, 200, 300, 400)));
+
+
     }
 
     public static void main(String[] args) {
@@ -54,36 +76,33 @@ public class Server {
         @Override
         public void run() {
             try (SocketWrapper socketWrapper = new SocketWrapper(socket)) {
-                String credentials = socketWrapper.readMessage(); // Receive credentials from the client
+                String credentials = (String) socketWrapper.read();
+                System.out.println("Received credentials from client");
+
+
                 String[] credentialsParts = credentials.split(":");
                 String username = credentialsParts[0];
                 String password = credentialsParts[1];
 
                 // Authenticate credentials
                 if (authenticate(username, password)) {
-                    socketWrapper.sendMessage("Login successful");
+                    socketWrapper.write("Login successful");
 
                     ArrayList<Integer> playerList = playerData.get(username);
-                    if (playerList != null) {
-                        //socketWrapper.sendMessage(playerList.toString()); // Send player list to client
-                        System.out.println("Player list for " + username + ": " + playerList);  // Custom debug output for the player list
-
-                        // Convert the player list to a comma-separated string
-                        String playerListString = playerList.stream()
-                                .map(String::valueOf)
-                                .collect(Collectors.joining(","));
-
-                        // Debugging: Print the player list string before sending it to the client
-                        System.out.println("Player list string for " + username + ": " + playerListString);  // Custom debug output for the string representation
-
-                        // Send the player list string to the client
-                        socketWrapper.sendMessage(playerList.toString());
+                    ArrayList<Player> curlist = alldata.get(username);
+                    if (curlist != null) {
+                        // Send the player list to the client as a serialized object
+                        System.out.println("Sending player list to client: " + curlist);
+                        socketWrapper.write(curlist);
+                    } else {
+                        System.out.println("No players available for username: " + username);
+                        socketWrapper.write(new ArrayList<>()); // Send an empty list if no players are found
                     }
 
 
 
                 } else {
-                    socketWrapper.sendMessage("Invalid username or password");
+                    socketWrapper.write("Invalid username or password");
                 }
             } catch (IOException e) {
                 e.printStackTrace();

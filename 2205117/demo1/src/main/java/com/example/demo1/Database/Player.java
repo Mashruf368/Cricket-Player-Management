@@ -1,7 +1,9 @@
 package com.example.demo1.Database;
 //package Players;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
     private String name;
     private String country;
     private int age;
