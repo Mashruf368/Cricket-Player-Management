@@ -99,8 +99,6 @@ public class Server {
                         socketWrapper.write(new ArrayList<>()); // Send an empty list if no players are found
                     }
 
-
-
                 } else {
                     socketWrapper.write("Invalid username or password");
                 }

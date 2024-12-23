@@ -1,10 +1,15 @@
 package com.example.demo1;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import com.example.demo1.Database.Player;
+import javafx.stage.Stage;
 
 public class HelloController {
     @FXML
@@ -36,5 +41,28 @@ public class HelloController {
             System.out.println("No players available for " + username);
         }
     }
+
+    @FXML
+    private void openSellView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("sell.fxml"));
+            //loader.setController(new SellController());
+            Parent root = loader.load();
+
+            // Pass the player list to the SellController
+            SellController sellController = loader.getController();
+            sellController.setPlayerList(playerList);
+
+            // Create a new scene and open the new window
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Sell Players");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
