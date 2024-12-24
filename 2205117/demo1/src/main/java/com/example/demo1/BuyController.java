@@ -1,6 +1,5 @@
 package com.example.demo1;
 
-//import com.sun.net.httpserver.Request;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -8,13 +7,9 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
 import com.example.demo1.Database.Player;
 
-public class SellController {
-//    @FXML
-//    private ListView<Player> playersListView;
+public class BuyController {
     @FXML
     private Text playerNameText;
     @FXML
@@ -24,14 +19,21 @@ public class SellController {
     @FXML
     private Text playerAgeText;
     @FXML
-    private Button confirmTransferButton; // Button for confirming transfer
+    private Button confirmPurchaseButton; // Button for confirming purchase
 
     @FXML
     private ListView<String> playersListView; // ListView to display player details
 
-    private List<Player> playerList;
+    private ArrayList<Player> playerList;
 
-    public void setPlayerList(List<Player> playerList) {
+    private SocketWrapper socketWrapper;
+
+    // Inject or initialize socketWrapper in your controller
+    public void setSocketWrapper(SocketWrapper socketWrapper) {
+        this.socketWrapper = socketWrapper;
+    }
+
+    public void setPlayerList(ArrayList<Player> playerList) {
         this.playerList = playerList;
 
         // Populate the ListView with player names
@@ -44,16 +46,9 @@ public class SellController {
             System.out.println("playersListView is null. Check FXML mapping.");
         }
     }
-    private SocketWrapper socketWrapper;
-
-    // Inject or initialize socketWrapper in your controller
-    public void setSocketWrapper(SocketWrapper socketWrapper) {
-        this.socketWrapper = socketWrapper;
-    }
-
 
     @FXML
-    private void onConfirmTransfer() {
+    private void onConfirmPurchase() {
         // Get the selected player from the ListView
         int selectedIndex = playersListView.getSelectionModel().getSelectedIndex();
         if (selectedIndex != -1) {
@@ -61,14 +56,14 @@ public class SellController {
             System.out.println("Selected Player: " + selectedPlayer.getName());
 
             if (selectedPlayer != null) {
-                System.out.println("Sending transfer request for player: " + selectedPlayer);
+                System.out.println("Sending buy request for player: " + selectedPlayer);
 
-                // Create a Request object with the "TRANSFER" command and the selected player
-                Request transferRequest = new Request("TRANSFER", selectedPlayer);
+                // Create a Request object with the "BUY" command and the selected player
+                Request buyRequest = new Request("BUY", selectedPlayer);
 
                 // Send the request to the server
-                socketWrapper.write(transferRequest);  // Send the request object directly
-                System.out.println("Transfer request sent to server.");
+                socketWrapper.write(buyRequest);  // Send the request object directly
+                System.out.println("Buy request sent to server.");
             } else {
                 System.out.println("Selected player is null.");
             }
@@ -76,6 +71,5 @@ public class SellController {
             System.out.println("No player selected.");
         }
     }
-
-
 }
+

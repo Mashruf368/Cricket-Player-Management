@@ -17,6 +17,6 @@
 
     <!-- Right side buttons -->
     <Button fx:id="sellPlayersButton" layoutX="158.0" layoutY="83.0" onAction="#openSellView" text="Sell Players" AnchorPane.leftAnchor="196.0" AnchorPane.topAnchor="83.0" />
-    <Button fx:id="buyPlayersButton" layoutX="196.0" layoutY="127.0" text="Buy Players" AnchorPane.leftAnchor="195.60000000000002" AnchorPane.topAnchor="127.0" />
+    <Button fx:id="buyPlayersButton" layoutX="196.0" layoutY="127.0" onAction="#openBuyView" text="Buy Players" AnchorPane.leftAnchor="195.60000000000002" AnchorPane.topAnchor="127.0" />
 
 </AnchorPane>

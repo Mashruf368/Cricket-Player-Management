@@ -69,5 +69,27 @@ public class HelloController {
         }
     }
 
+    @FXML
+    private void openBuyView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Buy.fxml"));
+            Parent root = loader.load();
+
+            // Pass the player list to the BuyController
+            BuyController buyController = loader.getController();
+            buyController.setPlayerList(playerList);
+            buyController.setSocketWrapper(socketWrapper);
+
+            // Create a new scene and open the new window
+            Stage stage = (Stage) usernameText.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Buy Players");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
