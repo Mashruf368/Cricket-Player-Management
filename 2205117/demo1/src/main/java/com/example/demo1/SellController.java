@@ -100,19 +100,45 @@ public class SellController {
 //        }
 //    }
 
+//    @FXML
+//    private void onConfirmTransfer() {
+//        // Get the selected player from the ListView
+//        Server.sell = true;
+//        int selectedIndex = playersListView.getSelectionModel().getSelectedIndex();
+//        if (selectedIndex != -1) {
+//            Player selectedPlayer = playerList.get(selectedIndex);
+//            System.out.println("Selected Player: " + selectedPlayer.getName());
+//            if (selectedPlayer != null) {
+//                System.out.println("Sending player: " + selectedPlayer);
+//
+//                socketWrapper.write(selectedPlayer); // Send the player object directly
+//                System.out.println("Player transfer sent to server.");
+//            } else {
+//                System.out.println("Selected player is null.");
+//            }
+//        } else {
+//            System.out.println("No player selected.");
+//        }
+//    }
+
+
     @FXML
     private void onConfirmTransfer() {
         // Get the selected player from the ListView
-        Server.sell = true;
         int selectedIndex = playersListView.getSelectionModel().getSelectedIndex();
         if (selectedIndex != -1) {
             Player selectedPlayer = playerList.get(selectedIndex);
             System.out.println("Selected Player: " + selectedPlayer.getName());
-            if (selectedPlayer != null) {
-                System.out.println("Sending player: " + selectedPlayer);
 
-                socketWrapper.write(selectedPlayer); // Send the player object directly
-                System.out.println("Player transfer sent to server.");
+            if (selectedPlayer != null) {
+                System.out.println("Sending transfer request for player: " + selectedPlayer);
+
+                // Create a Request object with the "TRANSFER" command and the selected player
+                Request transferRequest = new Request("TRANSFER", selectedPlayer);
+
+                // Send the request to the server
+                socketWrapper.write(transferRequest);  // Send the request object directly
+                System.out.println("Transfer request sent to server.");
             } else {
                 System.out.println("Selected player is null.");
             }
@@ -120,5 +146,6 @@ public class SellController {
             System.out.println("No player selected.");
         }
     }
+
 
 }

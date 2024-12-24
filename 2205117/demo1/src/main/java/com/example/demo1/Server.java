@@ -104,10 +104,10 @@ public class Server {
                         System.out.println("No players available for username: " + username);
                         socketWrapper.write(new ArrayList<>()); // Send an empty list if no players are found
                     }
-
-                    //handleClientRequests(socketWrapper, username);
-                    Player one = (Player) socketWrapper.read();
-                    System.out.println("player received" + one);
+                    while(true)
+                        handleClientRequests(socketWrapper, username);
+//                    Player one = (Player) socketWrapper.read();
+//                    System.out.println("player received" + one);
                     //System.out.println("passed test already");
 
                 } else {
@@ -125,31 +125,31 @@ public class Server {
         }
     }
 
-//    private static void handleClientRequests(SocketWrapper socketWrapper, String username) {
-//        while (true) {
-//            // Read the incoming request
-//            Object receivedObject = socketWrapper.read();
-//            if (receivedObject instanceof Request) {
-//                Request request = (Request) receivedObject;
-//                String command = request.getCommand();
-//                Object data = request.getData();
-//
-//                switch (command) {
-//                    case "TRANSFER":
-//                        handleTransfer((Player) data, username);
-//                        break;
-//                    case "BUY":
-//                        handleBuy((Player) data, username);
-//                        break;
-//                    default:
-//                        System.out.println("Unknown command: " + command);
-//                }
-//            } else {
-//                System.out.println("Invalid object received: " + receivedObject);
-//                break;
-//            }
-//        }
-//    }
+    private static void handleClientRequests(SocketWrapper socketWrapper, String username) {
+        while (true) {
+            // Read the incoming request
+            Object receivedObject = socketWrapper.read();
+            if (receivedObject instanceof Request) {
+                Request request = (Request) receivedObject;
+                String command = request.getCommand();
+                Object data = request.getData();
+
+                switch (command) {
+                    case "TRANSFER":
+                        handleTransfer((Player) data, username);
+                        break;
+                    case "BUY":
+                        handleBuy((Player) data, username);
+                        break;
+                    default:
+                        System.out.println("Unknown command: " + command);
+                }
+            } else {
+                System.out.println("Invalid object received: " + receivedObject);
+                break;
+            }
+        }
+    }
 
     private static void handleTransfer(Player player, String username) {
         System.out.println("Processing transfer for player: " + player + " from " + username);
