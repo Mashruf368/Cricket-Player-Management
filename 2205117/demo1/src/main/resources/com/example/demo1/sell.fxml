@@ -12,6 +12,6 @@
 
     <!-- Username Display (Dynamic) -->
     <Text fx:id="usernameText" style="-fx-font-size: 18px;" text="" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="60" />
-    <Button layoutX="266.0" layoutY="280.0" text="CONFIRM TRANSFER" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="280.0" />
+    <Button layoutX="266.0" layoutY="280.0" text="CONFIRM TRANSFER" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="280.0" onAction="#onConfirmTransfer"/>
 
 </AnchorPane>

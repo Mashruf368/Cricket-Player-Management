@@ -1,8 +1,12 @@
 package com.example.demo1;
 
+//import com.sun.net.httpserver.Request;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +23,8 @@ public class SellController {
     private Text playerPositionText;
     @FXML
     private Text playerAgeText;
+    @FXML
+    private Button confirmTransferButton; // Button for confirming transfer
 
     @FXML
     private ListView<String> playersListView; // ListView to display player details
@@ -37,6 +43,12 @@ public class SellController {
         } else {
             System.out.println("playersListView is null. Check FXML mapping.");
         }
+    }
+    private SocketWrapper socketWrapper;
+
+    // Inject or initialize socketWrapper in your controller
+    public void setSocketWrapper(SocketWrapper socketWrapper) {
+        this.socketWrapper = socketWrapper;
     }
 
     // Handle player selection
@@ -87,5 +99,26 @@ public class SellController {
 //            }
 //        }
 //    }
+
+    @FXML
+    private void onConfirmTransfer() {
+        // Get the selected player from the ListView
+        Server.sell = true;
+        int selectedIndex = playersListView.getSelectionModel().getSelectedIndex();
+        if (selectedIndex != -1) {
+            Player selectedPlayer = playerList.get(selectedIndex);
+            System.out.println("Selected Player: " + selectedPlayer.getName());
+            if (selectedPlayer != null) {
+                System.out.println("Sending player: " + selectedPlayer);
+
+                socketWrapper.write(selectedPlayer); // Send the player object directly
+                System.out.println("Player transfer sent to server.");
+            } else {
+                System.out.println("Selected player is null.");
+            }
+        } else {
+            System.out.println("No player selected.");
+        }
+    }
 
 }

@@ -18,6 +18,7 @@ public class HelloController {
     private Text usernameText; // This is the username text
     private ArrayList<Player> playerList;
     private String username;
+    private SocketWrapper socketWrapper;
     // Method to set the username and update the UI
     public void setUsername(String username) {
         this.username = username;  // Assign the username to the instance variable
@@ -28,6 +29,9 @@ public class HelloController {
     public void setPlayerList(ArrayList<Player> playerList) {
         this.playerList = playerList;
         System.out.println("Player list set for " + username);
+    }
+    public void setSocketWrapper(SocketWrapper socketWrapper) {
+        this.socketWrapper = socketWrapper;
     }
 
     @FXML
@@ -52,9 +56,10 @@ public class HelloController {
             // Pass the player list to the SellController
             SellController sellController = loader.getController();
             sellController.setPlayerList(playerList);
+            sellController.setSocketWrapper(socketWrapper);
 
             // Create a new scene and open the new window
-            Stage stage = new Stage();
+            Stage stage = (Stage) usernameText.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Sell Players");
             stage.show();

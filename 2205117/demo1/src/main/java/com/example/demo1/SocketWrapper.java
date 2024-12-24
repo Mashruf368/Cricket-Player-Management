@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
 
-public class SocketWrapper implements AutoCloseable {
+public class SocketWrapper {
     private final Socket socket;
 //    private final BufferedReader input;
 //    private final PrintWriter output;
@@ -16,6 +16,7 @@ public class SocketWrapper implements AutoCloseable {
         this.objectOutput = new ObjectOutputStream(socket.getOutputStream()); // Initialize output first
         this.objectOutput.flush(); // Ensure header is sent
         this.objectInput = new ObjectInputStream(socket.getInputStream()); // Initialize input next
+        System.out.println("SocketWrapper initialized for socket: " + socket);
     }
 //
 //    public String readMessage() throws IOException {
@@ -59,7 +60,9 @@ public class SocketWrapper implements AutoCloseable {
             objectOutput.flush();
         } catch (IOException e) {
             System.out.println("Error writing to socket");
+            e.printStackTrace();
         }
+        System.out.println("Written to socket: " + o);
     }
 
 
@@ -69,6 +72,7 @@ public class SocketWrapper implements AutoCloseable {
         objectInput.close();
         objectOutput.close();
         socket.close();
+        System.out.println("Closing socket: " + socket);
     }
 
 }

@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import com.example.demo1.SocketWrapper;
 
 import java.io.*;
 import java.net.Socket;
@@ -31,8 +32,9 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
+        Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
                                                                                                 // Establish socket connection with the server
-        try (Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT)) {
+        try {
             SocketWrapper socketWrapper = new SocketWrapper(socket);
             String credentials = username + ":" + password;
 
@@ -58,18 +60,21 @@ public class LoginController {
                     System.out.println("Player list received: " + playerList);
                     System.out.println("now sending to hello view playerlist");
                     //ArrayList<Player> playerList = parsePlayerList(playerListString);                       // Convert string to ArrayList
-                    openHelloView(username, playerList);                                                            // Pass the username and player list to HelloController
+                    openHelloView(username, playerList,socketWrapper);                                                            // Pass the username and player list to HelloController
                 }
 
             } else {
                 statusLabel.setText("Invalid username or password");
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
 
 
-    private void openHelloView(String username,ArrayList<Player> playerList) {
+
+    private void openHelloView(String username,ArrayList<Player> playerList,SocketWrapper socketWrapper) {
         // Logic to transition to the Hello view (you can use FXMLLoader for this)
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
@@ -79,6 +84,8 @@ public class LoginController {
             HelloController controller = loader.getController();
             controller.setUsername(username);  // Set the username in HelloController
             controller.setPlayerList(playerList);
+            controller.setSocketWrapper(socketWrapper);
+
 
             // Update the stage with the new scene
             Stage stage = (Stage) statusLabel.getScene().getWindow();
@@ -87,93 +94,4 @@ public class LoginController {
             e.printStackTrace();
         }
     }
-
-
-
 }
-
-
-
-/*
-private void sendCredentials(Socket socket, String credentials) throws IOException {
-        ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-        out.writeObject(credentials); // Send the credentials as a serialized object
-        out.flush();
-    }
-
-    private String receiveResponse(Socket socket) throws IOException, ClassNotFoundException {
-        ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
-        return (String) in.readObject(); // Receive the response as a serialized object
-    }
-
-
-
-//    private void openHelloView(String username, ArrayList<Player> playerList) {
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
-//            Parent root = loader.load();
-//
-//            HelloController helloController = loader.getController();
-//            helloController.setUsername(username);
-//            helloController.setPlayerList(playerList);
-//
-//            Stage stage = (Stage) statusLabel.getScene().getWindow();
-//            stage.setScene(new Scene(root));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-    private ArrayList<Player> parsePlayerList(String playerListString) {
-        ArrayList<Player> players = new ArrayList<>();
-
-        // Ensure splitting by a semicolon with a newline before the semicolon
-        String[] playerStrings = playerListString.split(";\n");
-
-        for (String playerString : playerStrings) {
-            // Trim extra spaces and newlines
-            playerString = playerString.trim();
-            if (playerString.isEmpty()) continue;
-
-            // Split by line breaks to get attributes
-            String[] attributes = playerString.split("\n");
-
-            if (attributes.length < 8) {
-                System.out.println("Skipping incomplete player entry: " + playerString);
-                continue;  // Skip incomplete entries
-            }
-
-            // Parse attributes manually and handle potential parsing issues
-            try {
-                String name = attributes[0].split(" : ")[1].trim();
-                String country = attributes[1].split(" : ")[1].trim();
-                int age = Integer.parseInt(attributes[2].split(" : ")[1].trim());
-                double height = Double.parseDouble(attributes[3].split(" : ")[1].replace("m", "").trim());
-                String club = attributes[4].split(" : ")[1].trim();
-                String position = attributes[5].split(" : ")[1].trim();
-                int jersey_no = attributes[6].contains("Unavailable") ? 0 : Integer.parseInt(attributes[6].split(" : ")[1].trim());
-                long salary = Long.parseLong(attributes[7].split(" : ")[1].trim());
-
-                // Add the player to the list
-                players.add(new Player(name, country, age, height, club, position, jersey_no, salary));
-            } catch (Exception e) {
-                System.out.println("Error parsing player data: " + playerString);
-                e.printStackTrace();
-            }
-        }
-
-        return players;
-    }
-
-
-
-
-    private Object receiveObject(Socket socket) throws IOException, ClassNotFoundException {
-        ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
-        return objectInputStream.readObject();  // Receive the serialized object (e.g., ArrayList<Player>)
-    }
-
-
-
-
- */

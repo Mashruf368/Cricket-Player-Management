@@ -19,6 +19,8 @@ public class Server {
     private static final Map<String, String> credentials = new HashMap<>();
     private static final Map<String, ArrayList<Integer>> playerData = new HashMap<>(); // Maps usernames to player lists
     private static final Map<String, ArrayList<Player>> alldata = new HashMap<>();
+    public static volatile boolean sell = false;
+    public static volatile boolean buy = false;
 
     static {
         // Hardcoded credentials in the server
@@ -56,6 +58,8 @@ public class Server {
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Client connected: " + clientSocket.getInetAddress());
+                System.out.println("Client connected from port: " + clientSocket.getPort());
+
 
                 // Start a new thread for handling communication with the client
                 new Thread(new ClientHandler(clientSocket)).start();
@@ -75,7 +79,9 @@ public class Server {
 
         @Override
         public void run() {
-            try (SocketWrapper socketWrapper = new SocketWrapper(socket)) {
+            SocketWrapper socketWrapper = null;
+            try {
+                socketWrapper = new SocketWrapper(socket);
                 String credentials = (String) socketWrapper.read();
                 System.out.println("Received credentials from client");
 
@@ -99,9 +105,15 @@ public class Server {
                         socketWrapper.write(new ArrayList<>()); // Send an empty list if no players are found
                     }
 
+                    //handleClientRequests(socketWrapper, username);
+                    Player one = (Player) socketWrapper.read();
+                    System.out.println("player received" + one);
+                    //System.out.println("passed test already");
+
                 } else {
                     socketWrapper.write("Invalid username or password");
                 }
+                //socketWrapper.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -112,4 +124,46 @@ public class Server {
             return credentials.containsKey(username) && credentials.get(username).equals(password);
         }
     }
+
+//    private static void handleClientRequests(SocketWrapper socketWrapper, String username) {
+//        while (true) {
+//            // Read the incoming request
+//            Object receivedObject = socketWrapper.read();
+//            if (receivedObject instanceof Request) {
+//                Request request = (Request) receivedObject;
+//                String command = request.getCommand();
+//                Object data = request.getData();
+//
+//                switch (command) {
+//                    case "TRANSFER":
+//                        handleTransfer((Player) data, username);
+//                        break;
+//                    case "BUY":
+//                        handleBuy((Player) data, username);
+//                        break;
+//                    default:
+//                        System.out.println("Unknown command: " + command);
+//                }
+//            } else {
+//                System.out.println("Invalid object received: " + receivedObject);
+//                break;
+//            }
+//        }
+//    }
+
+    private static void handleTransfer(Player player, String username) {
+        System.out.println("Processing transfer for player: " + player + " from " + username);
+        // Remove player from the user's list and implement the transfer logic
+        //alldata.get(username).remove(player);
+        System.out.println("Player transferred successfully.");
+    }
+
+    private static void handleBuy(Player player, String username) {
+        System.out.println("Processing purchase for player: " + player + " for " + username);
+        // Add player to the user's list and implement the purchase logic
+        //alldata.get(username).add(player);
+        System.out.println("Player purchased successfully.");
+    }
 }
+
+
