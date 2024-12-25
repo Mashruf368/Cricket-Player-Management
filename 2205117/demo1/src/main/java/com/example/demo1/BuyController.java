@@ -59,7 +59,7 @@ public class BuyController {
                 System.out.println("Sending buy request for player: " + selectedPlayer);
 
                 // Create a Request object with the "BUY" command and the selected player
-                Request buyRequest = new Request("BUY", selectedPlayer);
+                Request buyRequest = new Request("BUY", selectedPlayer,0);
 
                 // Send the request to the server
                 socketWrapper.write(buyRequest);  // Send the request object directly

@@ -4,6 +4,7 @@ package com.example.demo1;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -25,6 +26,8 @@ public class SellController {
     private Text playerAgeText;
     @FXML
     private Button confirmTransferButton; // Button for confirming transfer
+    @FXML
+    private TextField offerPriceField; // TextField for entering the offer price
 
     @FXML
     private ListView<String> playersListView; // ListView to display player details
@@ -58,17 +61,24 @@ public class SellController {
         int selectedIndex = playersListView.getSelectionModel().getSelectedIndex();
         if (selectedIndex != -1) {
             Player selectedPlayer = playerList.get(selectedIndex);
-            System.out.println("Selected Player: " + selectedPlayer.getName());
 
             if (selectedPlayer != null) {
-                System.out.println("Sending transfer request for player: " + selectedPlayer);
+                String offerPriceText = offerPriceField.getText();
+                try {
+                    double offerPrice = Double.parseDouble(offerPriceText);
 
-                // Create a Request object with the "TRANSFER" command and the selected player
-                Request transferRequest = new Request("TRANSFER", selectedPlayer);
+                    System.out.println("Selected Player: " + selectedPlayer.getName());
+                    System.out.println("Offer Price: " + offerPrice);
 
-                // Send the request to the server
-                socketWrapper.write(transferRequest);  // Send the request object directly
-                System.out.println("Transfer request sent to server.");
+                    // Create a Request object with the "TRANSFER" command, player, and offer price
+                    Request transferRequest = new Request("TRANSFER", selectedPlayer, offerPrice);
+
+                    // Send the request to the server
+                    socketWrapper.write(transferRequest);
+                    System.out.println("Transfer request sent to server.");
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid offer price entered.");
+                }
             } else {
                 System.out.println("Selected player is null.");
             }

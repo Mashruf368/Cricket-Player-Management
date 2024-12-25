@@ -19,6 +19,7 @@ public class Server {
     private static final Map<String, String> credentials = new HashMap<>();
     private static final Map<String, ArrayList<Integer>> playerData = new HashMap<>(); // Maps usernames to player lists
     private static final Map<String, ArrayList<Player>> alldata = new HashMap<>();
+    static ArrayList<Player> onsale = new ArrayList<>();
     public static volatile boolean sell = false;
     public static volatile boolean buy = false;
 
@@ -133,10 +134,11 @@ public class Server {
                 Request request = (Request) receivedObject;
                 String command = request.getCommand();
                 Object data = request.getData();
+                double offerPrice = request.getOfferPrice();
 
                 switch (command) {
                     case "TRANSFER":
-                        handleTransfer((Player) data, username);
+                        handleTransfer((Player) data, username,offerPrice);
                         break;
                     case "BUY":
                         handleBuy((Player) data, username);
@@ -151,10 +153,9 @@ public class Server {
         }
     }
 
-    private static void handleTransfer(Player player, String username) {
-        System.out.println("Processing transfer for player: " + player + " from " + username);
-        // Remove player from the user's list and implement the transfer logic
-        //alldata.get(username).remove(player);
+    private static void handleTransfer(Player player, String username,double offerprice) {
+        System.out.println("Processing transfer for player: " + player + " from " + username+" at price "+offerprice);
+        File.write(player,offerprice);
         System.out.println("Player transferred successfully.");
     }
 

@@ -5,6 +5,7 @@
 <?import javafx.scene.text.Text?>
 
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <AnchorPane prefHeight="331.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.SellController">
     <!-- Title at the top -->
     <Text fx:id="welcomeText" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="TRANSFER WINDOW" wrappingWidth="286.8577880859375" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="20" />
@@ -12,6 +13,11 @@
 
     <!-- Username Display (Dynamic) -->
     <Text fx:id="usernameText" style="-fx-font-size: 18px;" text="" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="60" />
+
+    <Text style="-fx-font-size: 14px;" text="Enter Offer Price:" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="220.0" />
+    <TextField fx:id="offerPriceField" layoutX="266.0" layoutY="240.0" prefWidth="120.0" />
+
+
     <Button layoutX="266.0" layoutY="280.0" text="CONFIRM TRANSFER" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="280.0" onAction="#onConfirmTransfer"/>
 
 </AnchorPane>
