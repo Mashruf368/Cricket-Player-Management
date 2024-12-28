@@ -68,6 +68,7 @@ public void setPlayerPriceMap(Map<Player, Double> playerPriceMap) {
 
             // Add the formatted details to the ListView
             playersListView.getItems().add(playerDetails);
+            System.out.println("testing map " +playerPriceMap);
         });
     } else {
         System.out.println("playersListView is null. Check FXML mapping.");
@@ -77,27 +78,41 @@ public void setPlayerPriceMap(Map<Player, Double> playerPriceMap) {
 
     @FXML
     private void onConfirmPurchase() {
-        // Get the selected player from the ListView
+        // Get the selected index from the ListView
         int selectedIndex = playersListView.getSelectionModel().getSelectedIndex();
         if (selectedIndex != -1) {
-            Player selectedPlayer = playerList.get(selectedIndex);
-            System.out.println("Selected Player: " + selectedPlayer.getName());
+            // Iterate through the map to find the player at the selected index
+            int currentIndex = 0;
+            Player selectedPlayer = null;
+            Double selectedPrice = null;
 
-            if (selectedPlayer != null) {
-                System.out.println("Sending buy request for player: " + selectedPlayer);
+            for (Map.Entry<Player, Double> entry : playerPriceMap.entrySet()) {
+                if (currentIndex == selectedIndex) {
+                    selectedPlayer = entry.getKey();
+                    selectedPrice = entry.getValue();
+                    break;
+                }
+                currentIndex++;
+            }
 
-                // Create a Request object with the "BUY" command and the selected player
-                Request buyRequest = new Request("BUY", selectedPlayer,0);
+            // Check if a player was found
+            if (selectedPlayer != null && selectedPrice != null) {
+                System.out.println("Selected Player: " + selectedPlayer.getName() + " with price: " + selectedPrice);
 
-                // Send the request to the server
-                socketWrapper.write(buyRequest);  // Send the request object directly
+                // Create and send the request to the server
+                Request buyRequest = new Request("BUY", selectedPlayer, selectedPrice);
+                socketWrapper.write(buyRequest);
                 System.out.println("Buy request sent to server.");
             } else {
-                System.out.println("Selected player is null.");
+                System.out.println("Failed to find the selected player in the map.");
             }
         } else {
             System.out.println("No player selected.");
         }
     }
+
+
+
+
 }
 

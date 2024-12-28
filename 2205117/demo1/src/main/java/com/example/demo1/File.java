@@ -111,4 +111,22 @@ public class File {
         return playerPriceMap;
     }
 
+    public static synchronized void write(Map<Player, Double> playerPriceMap) {
+        final String FILE_PATH = "transfer.txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH, false))) { // Overwrite mode
+            for (Map.Entry<Player, Double> entry : playerPriceMap.entrySet()) {
+                Player player = entry.getKey();
+                double price = entry.getValue();
+                String playerData = formatPlayerData(player, price);
+                writer.write(playerData);
+                writer.newLine(); // Add a new line after each entry
+            }
+            System.out.println("Updated transfer file successfully.");
+        } catch (IOException e) {
+            System.err.println("Error writing to file: " + e.getMessage());
+        }
+    }
+
+
 }

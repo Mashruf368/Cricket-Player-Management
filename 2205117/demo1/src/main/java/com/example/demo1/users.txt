@@ -1,3 +1,9 @@
-user1,password123
-user2,pass456
-clubA,clubApass
+Mumbai Indians,12000000000
+Delhi Capitals,34000000000
+Kolkata Knight Riders,34000000000
+Royal Challengers Bangalore,34000000000
+Rajasthan Royals,34000000000
+Gujarat Titans,34000000000
+Chennai Super Kings,34000000000
+Punjab Kings,34000000000
+Lucknow Super Giants,34000000000

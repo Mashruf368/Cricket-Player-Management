@@ -220,4 +220,35 @@ public class PlayerList
         // Convert the Set to an ArrayList
         return new ArrayList<>(sp);
     }
+    public static void save(ArrayList<Player> players) {
+        // Define the file path
+        String filePath = "C:/Users/Hp/Downloads/2205117 (6)/2205117/demo1/src/main/java/com/example/demo1/Database/players.txt";
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            // Iterate through the list of players and write each one to the file
+            for (Player player : players) {
+                // Format the player's attributes as a comma-separated line
+                String line = player.getName() + "," +
+                        player.getCountry() + "," +
+                        player.getAge() + "," +
+                        player.getHeight() + "," +
+                        player.getClub() + "," +
+                        player.getPosition() + "," +
+                        player.getJersey_no() + "," +
+                        player.getSalary();
+
+                // Write the line to the file
+                writer.write(line);
+                writer.newLine();
+            }
+
+            System.out.println("Player list successfully saved to file.");
+        } catch (IOException e) {
+            System.out.println("Error while saving player list to file.");
+            e.printStackTrace();
+        }
+    }
+
 }
+
+
