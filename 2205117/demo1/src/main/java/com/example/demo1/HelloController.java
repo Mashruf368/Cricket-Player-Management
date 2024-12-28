@@ -8,6 +8,9 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.example.demo1.Database.Player;
 import javafx.stage.Stage;
 
@@ -76,8 +79,11 @@ public class HelloController {
             Parent root = loader.load();
 
             // Pass the player list to the BuyController
+            Map<Player,Double> lastlist = new HashMap<>();
+            lastlist = File.read();
+            System.out.println("Player Price Map: " + lastlist);
             BuyController buyController = loader.getController();
-            buyController.setPlayerList(playerList);
+            buyController.setPlayerPriceMap(lastlist);
             buyController.setSocketWrapper(socketWrapper);
 
             // Create a new scene and open the new window

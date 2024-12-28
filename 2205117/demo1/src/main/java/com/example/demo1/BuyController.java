@@ -7,6 +7,8 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
+
 import com.example.demo1.Database.Player;
 
 public class BuyController {
@@ -27,25 +29,51 @@ public class BuyController {
     private ArrayList<Player> playerList;
 
     private SocketWrapper socketWrapper;
+    private Map<Player, Double> playerPriceMap;
 
     // Inject or initialize socketWrapper in your controller
     public void setSocketWrapper(SocketWrapper socketWrapper) {
         this.socketWrapper = socketWrapper;
     }
 
-    public void setPlayerList(ArrayList<Player> playerList) {
-        this.playerList = playerList;
+//    public void setPlayerList(ArrayList<Player> playerList) {
+//        this.playerList = playerList;
+//
+//        // Populate the ListView with player names
+//        if (playersListView != null) {
+//            playersListView.getItems().clear(); // Clear existing items
+//            for (Player player : playerList) {
+//                playersListView.getItems().add(player.getName() + " - " + player.getPosition());
+//            }
+//        } else {
+//            System.out.println("playersListView is null. Check FXML mapping.");
+//        }
+//    }
+public void setPlayerPriceMap(Map<Player, Double> playerPriceMap) {
+    this.playerPriceMap = playerPriceMap;
 
-        // Populate the ListView with player names
-        if (playersListView != null) {
-            playersListView.getItems().clear(); // Clear existing items
-            for (Player player : playerList) {
-                playersListView.getItems().add(player.getName() + " - " + player.getPosition());
-            }
-        } else {
-            System.out.println("playersListView is null. Check FXML mapping.");
-        }
+    // Populate the ListView with all entries
+    if (playersListView != null) {
+        playersListView.getItems().clear(); // Clear existing items
+
+        playerPriceMap.forEach((player, price) -> {
+            // Format player details for display
+            String playerDetails = String.format(
+                    "%-20s %-15s %-20s %-10.2f",
+                    player.getName(),
+                    player.getPosition(),
+                    player.getClub(),
+                    price
+            );
+
+            // Add the formatted details to the ListView
+            playersListView.getItems().add(playerDetails);
+        });
+    } else {
+        System.out.println("playersListView is null. Check FXML mapping.");
     }
+}
+
 
     @FXML
     private void onConfirmPurchase() {

@@ -3,6 +3,8 @@ import com.example.demo1.Database.Player;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.io.*;
+import java.util.*;
 
 public class File {
 
@@ -65,11 +67,48 @@ public class File {
     }
 
 
-    static ArrayList<Player> read()
-    {
-        ArrayList<Player> a = new ArrayList<>();
 
 
-        return a;
+    public static Map<Player, Double> read() {
+        Map<Player, Double> playerPriceMap = new HashMap<>();
+
+        final String FILE_PATH = "transfer.txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Split the line into parts using comma as the delimiter
+                String[] parts = line.split(",");
+
+                // Ensure the line has the required number of fields (8 for player + 1 for price)
+                if (parts.length == 9) {
+                    // Parse the player fields
+                    String name = parts[0].trim();
+                    String country = parts[1].trim();
+                    int age = Integer.parseInt(parts[2].trim());
+                    double height = Double.parseDouble(parts[3].trim());
+                    String club = parts[4].trim();
+                    String position = parts[5].trim();
+                    int jersey_no = Integer.parseInt(parts[6].trim());
+                    long salary = Long.parseLong(parts[7].trim());
+
+                    // Parse the price (9th field)
+                    double price = Double.parseDouble(parts[8].trim());
+
+                    // Create the Player object
+                    Player player = new Player(name, country, age, height, club, position, jersey_no, salary);
+
+                    // Add to the map
+                    playerPriceMap.put(player, price);
+                } else {
+                    System.err.println("Invalid line format: " + line);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
+
+        return playerPriceMap;
     }
+
 }
