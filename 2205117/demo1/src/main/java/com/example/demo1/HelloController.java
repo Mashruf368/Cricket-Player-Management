@@ -81,6 +81,9 @@ public class HelloController {
             // Pass the player list to the BuyController
             Map<Player,Double> lastlist = new HashMap<>();
             lastlist = File.read();
+
+            lastlist.entrySet().removeIf(entry -> entry.getKey().getClub().equals(username));
+
             System.out.println("Player Price Map: " + lastlist);
             BuyController buyController = loader.getController();
             buyController.setPlayerPriceMap(lastlist);

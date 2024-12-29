@@ -22,11 +22,13 @@ public class Server {
     static ArrayList<Player> onsale = new ArrayList<>();
     public static volatile boolean sell = false;
     public static volatile boolean buy = false;
+    public static Map <String,Double> club_details = new HashMap<>();
 
     static {
         // Hardcoded credentials in the server
         PlayerList.makelist();
         //System.out.println(PlayerList.playerList);
+        club_details = File.readclub();
 
 
         credentials.put("one", "12");
@@ -164,10 +166,13 @@ public class Server {
         System.out.println("Processing purchase for player: " + player + " for " + username + "for " + offerprice);
         // Add player to the user's list and implement the purchase logic
         //alldata.get(username).add(player);
+        String source = "";
+        String dest = username;
         for(Player p : PlayerList.playerList)
         {
             if(p.getName().equals(player.getName()))
             {
+                source = p.getClub();
                 p.setClub(username);
             }
             //System.out.println(p);
@@ -178,6 +183,10 @@ public class Server {
         transferlist.remove(player);
         System.out.println(transferlist);
         File.write(transferlist);
+        club_details.put(source,club_details.get(source)+offerprice);
+        club_details.put(dest,club_details.get(dest)-offerprice);
+        File.writeclub(club_details);
+
 
 
 

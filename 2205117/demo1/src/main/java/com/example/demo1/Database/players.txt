@@ -45,7 +45,7 @@ Rassie van der Dussen,South Africa,35,1.87,Rajasthan Royals,Batsman,78,15000000
 Krunal Pandya,India,33,1.8,Lucknow Super Giants,Allrounder,24,16000000
 Ishan Kishan,India,26,1.68,Mumbai Indians,Wicketkeeper,23,20000000
 Lockie Ferguson,New Zealand,33,1.85,Delhi Capitals,Bowler,69,17500000
-Harshal Patel,India,33,1.75,Kolkata Knight Riders,Bowler,1,15000000
+Harshal Patel,India,33,1.75,Royal Challengers Bangalore,Bowler,1,15000000
 Mustafizur Rahman,Bangladesh,29,1.8,Delhi Capitals,Bowler,90,14000000
 Litton Das,Bangladesh,30,1.7,Kolkata Knight Riders,Wicketkeeper,0,10000000
 rafin,bangladesh,23,1.1,rising pune supergiants,batsman,99,1234321

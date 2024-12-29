@@ -1,0 +1,9 @@
+Mumbai Indians,1.2E10
+Punjab Kings,3.4E10
+Delhi Capitals,3.4E10
+Gujarat Titans,3.4E10
+Lucknow Super Giants,3.4E10
+Rajasthan Royals,3.4E10
+Kolkata Knight Riders,3.4000112233E10
+Royal Challengers Bangalore,3.3999887767E10
+Chennai Super Kings,3.4E10

@@ -127,6 +127,44 @@ public class File {
             System.err.println("Error writing to file: " + e.getMessage());
         }
     }
+    public static Map<String,Double> readclub() {
+        Map<String,Double> clublist = new HashMap<>();
+        try(BufferedReader reader = new BufferedReader(new FileReader("Clubs.txt")))
+        {
+            String line = "";
+            while((line = reader.readLine())!= null)
+            {
+                String[] parts = line.split(",");
+                String club = parts[0].trim();
+                double budget = Double.parseDouble(parts[1].trim());
+                clublist.put(club,budget);
+            }
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return clublist;
+    }
+    public static void writeclub(Map<String,Double> a) {
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("Clubs.txt")))
+        {
+            for(Map.Entry<String,Double> entry : a.entrySet())
+            {
+                String name = entry.getKey();
+                Double budget = entry.getValue();
+                String formattedBudget = String.format("%.2f", budget);
+                String idiot = name + "," + formattedBudget;
+                writer.write(idiot);
+                writer.newLine();
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 }
