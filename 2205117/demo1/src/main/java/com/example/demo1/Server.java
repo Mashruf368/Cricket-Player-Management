@@ -176,6 +176,7 @@ public class Server {
         PlayerList.save((ArrayList<Player>) PlayerList.playerList);
         Map<Player,Double> transferlist = File.read();
         transferlist.remove(player);
+        System.out.println(transferlist);
         File.write(transferlist);
 
 

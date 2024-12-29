@@ -31,7 +31,7 @@ Shikhar Dhawan,India,38,1.8,Punjab Kings,Batsman,42,17000000
 Kagiso Rabada,South Africa,29,1.91,Punjab Kings,Bowler,0,19000000
 Axar Patel,India,30,1.83,Delhi Capitals,Allrounder,20,17500000
 Mitchell Marsh,Australia,33,1.91,Delhi Capitals,Allrounder,31,18000000
-Dinesh Karthik,India,39,1.7,Royal Challengers Bangalore,Wicketkeeper,21,16000000
+Dinesh Karthik,India,39,1.7,Mumbai Indians,Wicketkeeper,21,16000000
 Ruturaj Gaikwad,India,27,1.78,Chennai Super Kings,Batsman,31,15000000
 Bhuvneshwar Kumar,India,34,1.78,Sunrisers Hyderabad,Bowler,15,14000000
 Aiden Markram,South Africa,30,1.83,Sunrisers Hyderabad,Allrounder,16,16000000
@@ -44,8 +44,8 @@ Mohammed Siraj,India,30,1.79,Royal Challengers Bangalore,Bowler,2,17000000
 Rassie van der Dussen,South Africa,35,1.87,Rajasthan Royals,Batsman,78,15000000
 Krunal Pandya,India,33,1.8,Lucknow Super Giants,Allrounder,24,16000000
 Ishan Kishan,India,26,1.68,Mumbai Indians,Wicketkeeper,23,20000000
-Lockie Ferguson,New Zealand,33,1.85,Kolkata Knight Riders,Bowler,69,17500000
-Harshal Patel,India,33,1.75,Royal Challengers Bangalore,Bowler,1,15000000
+Lockie Ferguson,New Zealand,33,1.85,Delhi Capitals,Bowler,69,17500000
+Harshal Patel,India,33,1.75,Kolkata Knight Riders,Bowler,1,15000000
 Mustafizur Rahman,Bangladesh,29,1.8,Delhi Capitals,Bowler,90,14000000
 Litton Das,Bangladesh,30,1.7,Kolkata Knight Riders,Wicketkeeper,0,10000000
 rafin,bangladesh,23,1.1,rising pune supergiants,batsman,99,1234321

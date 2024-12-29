@@ -94,4 +94,18 @@ public class Player implements Serializable {
         return s+r+t;
 
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true; // Check for reference equality
+        if (obj == null || getClass() != obj.getClass()) return false; // Check for null and class equality
+        Player player = (Player) obj;
+        return name != null && name.equals(player.name); // Compare the `name` field
+    }
+
+    @Override
+    public int hashCode() {
+        return name != null ? name.hashCode() : 0; // Use the `name` field for hash code computation
+    }
+
 }
