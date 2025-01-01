@@ -36,6 +36,11 @@ public class Server {
         credentials.put("Royal Challengers Bangalore", "rcb12");
         credentials.put("Kolkata Knight Riders", "kkr12");
         credentials.put("Delhi Capitals", "dc12");
+        credentials.put("Chennai Super Kings","csk12");
+        credentials.put("Gujarat Titans","gt12");
+        credentials.put("Rajasthan Royals","rr12");
+        credentials.put("Lucknow Super Giants","lsg12");
+        credentials.put("Punjab Kings","kxip12");
 
         Club r = new Club("Mumbai Indians");
         alldata.put("Mumbai Indians", new ArrayList<>(r.formclub()));
@@ -45,6 +50,16 @@ public class Server {
         alldata.put("Delhi Capitals", new ArrayList<>(r.formclub()));
         r = new Club("Kolkata Knight Riders");
         alldata.put("Kolkata Knight Riders",new ArrayList<>(r.formclub()));
+        r = new Club("Punjab Kings");
+        alldata.put("Punjab Kings",new ArrayList<>(r.formclub()));
+        r = new Club("Lucknow Super Giants");
+        alldata.put("Lucknow Super Giants",new ArrayList<>(r.formclub()));
+        r = new Club("Rajasthan Royals");
+        alldata.put("Rajasthan Royals",new ArrayList<>(r.formclub()));
+        r = new Club("Gujarat Titans");
+        alldata.put("Gujarat Titans",new ArrayList<>(r.formclub()));
+        r = new Club("Chennai Super Kings");
+        alldata.put("Chennai Super Kings",new ArrayList<>(r.formclub()));
 
 
 
@@ -144,7 +159,7 @@ public class Server {
                         handleTransfer((Player) data, username,offerPrice);
                         break;
                     case "BUY":
-                        handleBuy((Player) data, username,offerPrice);
+                        handleBuy((Player) data, username,offerPrice,socketWrapper);
                         break;
                     default:
                         System.out.println("Unknown command: " + command);
@@ -162,16 +177,19 @@ public class Server {
         System.out.println("Player transferred successfully.");
     }
 
-    private static void handleBuy(Player player, String username,double offerprice) {
+    private static void handleBuy(Player player, String username,double offerprice,SocketWrapper socketWrapper) {
         System.out.println("Processing purchase for player: " + player + " for " + username + "for " + offerprice);
         // Add player to the user's list and implement the purchase logic
         //alldata.get(username).add(player);
         String source = "";
         String dest = username;
-        for(Player p : PlayerList.playerList)
-        {
-            if(p.getName().equals(player.getName()))
-            {
+
+        if (club_details.get(dest) < offerprice) socketWrapper.write("FAIL");
+        else {
+
+
+        for (Player p : PlayerList.playerList) {
+            if (p.getName().equals(player.getName())) {
                 source = p.getClub();
                 p.setClub(username);
             }
@@ -179,18 +197,18 @@ public class Server {
         }
         //System.out.println(PlayerList.playerList);
         PlayerList.save((ArrayList<Player>) PlayerList.playerList);
-        Map<Player,Double> transferlist = File.read();
+        Map<Player, Double> transferlist = File.read();
         transferlist.remove(player);
         System.out.println(transferlist);
         File.write(transferlist);
-        club_details.put(source,club_details.get(source)+offerprice);
-        club_details.put(dest,club_details.get(dest)-offerprice);
+        club_details.put(source, club_details.get(source) + offerprice);
+        club_details.put(dest, club_details.get(dest) - offerprice);
         File.writeclub(club_details);
 
 
-
-
         System.out.println("Player purchased successfully.");
+        socketWrapper.write("DONE");
+    }
     }
 }
 

@@ -14,7 +14,7 @@ Suryakumar Yadav,India,34,1.78,Mumbai Indians,Batsman,63,17000000
 Sam Curran,England,26,1.75,Punjab Kings,Allrounder,58,20000000
 Mohammed Shami,India,34,1.73,Gujarat Titans,Bowler,1,14000000
 Yuzvendra Chahal,India,33,1.7,Rajasthan Royals,Bowler,3,15000000
-Cameron Green,Australia,25,1.93,Mumbai Indians,Allrounder,25,21000000
+Cameron Green,Australia,25,1.93,Punjab Kings,Allrounder,25,21000000
 Nicholas Pooran,West Indies,29,1.83,Lucknow Super Giants,Wicketkeeper,1,16500000
 Hardik Pandya,India,30,1.83,Gujarat Titans,Allrounder,33,18500000
 Faf du Plessis,South Africa,40,1.78,Royal Challengers Bangalore,Batsman,18,17500000

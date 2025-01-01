@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 
@@ -27,6 +28,9 @@ public class BuyController {
     private Text playerAgeText;
     @FXML
     private Button confirmPurchaseButton; // Button for confirming purchase
+    @FXML
+    private Label purchaseStatusLabel;
+
 
     @FXML
     private ListView<String> playersListView; // ListView to display player details
@@ -102,6 +106,19 @@ public void setPlayerPriceMap(Map<Player, Double> playerPriceMap) {
                 Request buyRequest = new Request("BUY", selectedPlayer, selectedPrice);
                 socketWrapper.write(buyRequest);
                 System.out.println("Buy request sent to server.");
+
+                String a = (String) socketWrapper.read();
+                if(a.equals("DONE")) {
+                    purchaseStatusLabel.setText("Purchase successful!");
+                    purchaseStatusLabel.setStyle("-fx-text-fill: green;");
+                }
+                else
+                {
+                    System.out.println("failed");
+                    purchaseStatusLabel.setText("Purchase failed: Not enough budget.");
+                    purchaseStatusLabel.setStyle("-fx-text-fill: red;");
+                }
+
             } else {
                 System.out.println("Failed to find the selected player in the map.");
             }
