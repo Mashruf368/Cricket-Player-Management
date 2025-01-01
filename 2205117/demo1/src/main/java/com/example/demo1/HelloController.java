@@ -19,14 +19,21 @@ public class HelloController {
     private Text welcomeText; // This is the "Welcome to the club" text
     @FXML
     private Text usernameText; // This is the username text
+
     private ArrayList<Player> playerList;
     private String username;
     private SocketWrapper socketWrapper;
-    // Method to set the username and update the UI
+    private Map<Player,Double> lastlist = new HashMap<>();
+
+    public void setmap(Map<Player,Double> a)
+    {
+        this.lastlist = a;
+    }
+
     public void setUsername(String username) {
-        this.username = username;  // Assign the username to the instance variable
+        this.username = username;
         welcomeText.setText("Welcome to the club");
-        usernameText.setText(username); // Set the username dynamically
+        usernameText.setText(username);
     }
 
     public void setPlayerList(ArrayList<Player> playerList) {
@@ -60,6 +67,7 @@ public class HelloController {
             SellController sellController = loader.getController();
             sellController.setPlayerList(playerList);
             sellController.setSocketWrapper(socketWrapper);
+            sellController.setUsername(username);
 
             // Create a new scene and open the new window
             Stage stage = (Stage) usernameText.getScene().getWindow();
@@ -79,7 +87,7 @@ public class HelloController {
             Parent root = loader.load();
 
             // Pass the player list to the BuyController
-            Map<Player,Double> lastlist = new HashMap<>();
+
             lastlist = File.read();
 
             lastlist.entrySet().removeIf(entry -> entry.getKey().getClub().equals(username));
@@ -88,6 +96,8 @@ public class HelloController {
             BuyController buyController = loader.getController();
             buyController.setPlayerPriceMap(lastlist);
             buyController.setSocketWrapper(socketWrapper);
+            buyController.setUsername(username);
+            buyController.setPlayerList(playerList);
 
             // Create a new scene and open the new window
             Stage stage = (Stage) usernameText.getScene().getWindow();

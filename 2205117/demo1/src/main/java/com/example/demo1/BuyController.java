@@ -1,15 +1,20 @@
 package com.example.demo1;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.example.demo1.Database.Player;
+import javafx.stage.Stage;
 
 public class BuyController {
     @FXML
@@ -26,29 +31,23 @@ public class BuyController {
     @FXML
     private ListView<String> playersListView; // ListView to display player details
 
-    private ArrayList<Player> playerList;
-
+    private List<Player> playerList;
     private SocketWrapper socketWrapper;
     private Map<Player, Double> playerPriceMap;
+    private String username;
+    public void setUsername(String a)
+    {
+        this.username = a;
+    }
 
     // Inject or initialize socketWrapper in your controller
     public void setSocketWrapper(SocketWrapper socketWrapper) {
         this.socketWrapper = socketWrapper;
     }
+    public void setPlayerList(List<Player> playerList) {
+        this.playerList = playerList;
+    }
 
-//    public void setPlayerList(ArrayList<Player> playerList) {
-//        this.playerList = playerList;
-//
-//        // Populate the ListView with player names
-//        if (playersListView != null) {
-//            playersListView.getItems().clear(); // Clear existing items
-//            for (Player player : playerList) {
-//                playersListView.getItems().add(player.getName() + " - " + player.getPosition());
-//            }
-//        } else {
-//            System.out.println("playersListView is null. Check FXML mapping.");
-//        }
-//    }
 public void setPlayerPriceMap(Map<Player, Double> playerPriceMap) {
     this.playerPriceMap = playerPriceMap;
 
@@ -108,6 +107,31 @@ public void setPlayerPriceMap(Map<Player, Double> playerPriceMap) {
             }
         } else {
             System.out.println("No player selected.");
+        }
+    }
+    @FXML
+    private void onbackbutton() {
+        try {
+            // Load the hello-view.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+            System.out.println("loaded hello view");
+            Parent root = loader.load();
+
+            // Pass data back to HelloController if needed
+            HelloController helloController = loader.getController();
+            helloController.setUsername(username); // Example of setting username
+            helloController.setmap(playerPriceMap);
+            helloController.setSocketWrapper(socketWrapper); // Passing socket wrapper
+            helloController.setPlayerList((ArrayList<Player>) playerList);
+            System.out.println("loaded variables");
+
+            // Set the new scene
+            Stage stage = (Stage) playersListView.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            //stage.setTitle("Club Dashboard");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
