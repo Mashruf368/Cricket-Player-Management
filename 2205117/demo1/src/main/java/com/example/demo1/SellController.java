@@ -33,6 +33,8 @@ public class SellController {
     @FXML
     private TextField offerPriceField; // TextField for entering the offer price
     private String username;
+    @FXML
+    private ListView<String> playerDetailsListView; // ListView to display player details
 
     @FXML
     private ListView<String> playersListView; // ListView to display player details
@@ -45,12 +47,14 @@ public class SellController {
 
     public void setPlayerList(List<Player> playerList) {
         this.playerList = playerList;
+        playersListView.setStyle("-fx-font-family: 'Consolas';");
 
         // Populate the ListView with player names
         if (playersListView != null) {
             playersListView.getItems().clear(); // Clear existing items
             for (Player player : playerList) {
-                playersListView.getItems().add(player.getName() + " - " + player.getPosition());
+                String formattedText = String.format("%-20s %-15s", player.getName(), player.getPosition());
+                playersListView.getItems().add(formattedText);
             }
         } else {
             System.out.println("playersListView is null. Check FXML mapping.");
@@ -120,6 +124,34 @@ public class SellController {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void onShowPlayerDetails() {
+        // Get the selected index
+        int selectedIndex = playersListView.getSelectionModel().getSelectedIndex();
+        if (selectedIndex != -1 && playerList != null && selectedIndex < playerList.size()) {
+            Player selectedPlayer = playerList.get(selectedIndex);
+            if (selectedPlayer != null) {
+                // Clear previous details
+                playerDetailsListView.getItems().clear();
+
+                // Add player details to the ListView
+                playerDetailsListView.getItems().add("Name: " + selectedPlayer.getName());
+                playerDetailsListView.getItems().add("Country: " + selectedPlayer.getCountry());
+                playerDetailsListView.getItems().add("Age: " + selectedPlayer.getAge());
+                playerDetailsListView.getItems().add("Height: " + selectedPlayer.getHeight() + " cm");
+                playerDetailsListView.getItems().add("Salary: $" + selectedPlayer.getSalary());
+                playerDetailsListView.getItems().add("Position: " + selectedPlayer.getPosition());
+                playerDetailsListView.getItems().add("Jersey Number: " + selectedPlayer.getJersey_no());
+
+                System.out.println("Displayed details for player: " + selectedPlayer.getName());
+            } else {
+                System.out.println("Selected player is null.");
+            }
+        } else {
+            System.out.println("No player selected or invalid index.");
+        }
+    }
+
 
 
 

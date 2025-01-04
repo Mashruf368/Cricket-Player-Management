@@ -6,19 +6,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="back" prefHeight="331.0" prefWidth="417.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.SellController">
+<AnchorPane fx:id="back" prefHeight="436.0" prefWidth="544.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.SellController">
     <!-- Title at the top -->
-    <Text fx:id="welcomeText" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="TRANSFER WINDOW" wrappingWidth="286.8577880859375" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="20" />
-    <ListView fx:id="playersListView" layoutX="20" layoutY="100" prefHeight="200" prefWidth="200" />
+    <Text fx:id="welcomeText" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="TRANSFER WINDOW" wrappingWidth="266.05780029296875" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="20" />
+    <ListView fx:id="playersListView" layoutX="20.0" layoutY="78.0" prefHeight="280.0" prefWidth="284.0" />
 
     <!-- Username Display (Dynamic) -->
     <Text fx:id="usernameText" style="-fx-font-size: 18px;" text="" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="60" />
 
-    <Text layoutX="274.0" layoutY="134.0" style="-fx-font-size: 14px;" text="Enter Offer Price:" AnchorPane.leftAnchor="274.0" AnchorPane.topAnchor="118.892578125" />
-    <TextField fx:id="offerPriceField" layoutX="274.0" layoutY="153.0" prefWidth="120.0" />
+    <Text layoutX="390.0" layoutY="295.0" style="-fx-font-size: 14px;" text="Enter Offer Price:" wrappingWidth="110.43609631061554" AnchorPane.leftAnchor="390.0" AnchorPane.topAnchor="279.892578125" />
+    <TextField fx:id="offerPriceField" layoutX="386.0" layoutY="309.0" prefWidth="120.0" />
 
 
-    <Button layoutX="270.0" layoutY="231.0" onAction="#onConfirmTransfer" text="CONFIRM TRANSFER" AnchorPane.leftAnchor="270.0" AnchorPane.topAnchor="231.0" />
-   <Button fx:id="exit" layoutX="346.0" layoutY="287.0" mnemonicParsing="false" onAction="#onbackbutton" text="BACK" />
+    <Button layoutX="386.0" layoutY="343.0" onAction="#onConfirmTransfer" text="CONFIRM TRANSFER" AnchorPane.leftAnchor="386.0" AnchorPane.topAnchor="343.0" />
+   <Button fx:id="exit" layoutX="464.0" layoutY="388.0" mnemonicParsing="false" onAction="#onbackbutton" text="BACK" />
+   <Button layoutX="20.0" layoutY="388.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="155.0" text="SHOW PLAYER DETAILS" />
+    <Button layoutX="20.0" layoutY="388.0" mnemonicParsing="false" onAction="#onShowPlayerDetails" prefHeight="26.0" prefWidth="155.0" text="SHOW PLAYER DETAILS" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="388" />
 
+    <!-- ListView for Player Details -->
+    <ListView fx:id="playerDetailsListView" layoutX="350.0" layoutY="78.0" prefHeight="200.0" prefWidth="300.0" AnchorPane.leftAnchor="350" AnchorPane.topAnchor="78" />
 </AnchorPane>

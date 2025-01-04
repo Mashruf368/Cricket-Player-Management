@@ -9,6 +9,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.example.demo1.Database.Player;
@@ -46,6 +47,26 @@ public class HelloController {
 
     @FXML
     private void showPlayers() {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("list.fxml"));
+            Parent root = loader.load();
+
+
+            ListController listController = loader.getController();
+            listController.setPlayerList((List<Player>) playerList);
+
+            // Create a new scene and open the new window
+            Stage stage = (Stage) usernameText.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("My Players");
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         if (playerList != null) {
             System.out.println("Players for " + username + ":");
             for (Player player : playerList) {

@@ -77,6 +77,31 @@ public void setPlayerPriceMap(Map<Player, Double> playerPriceMap) {
         System.out.println("playersListView is null. Check FXML mapping.");
     }
 }
+@FXML
+public void setPlayerPriceMap1()
+{
+    this.playerPriceMap = File.read();
+    if (playersListView != null) {
+        playersListView.getItems().clear(); // Clear existing items
+
+        playerPriceMap.forEach((player, price) -> {
+            // Format player details for display
+            String playerDetails = String.format(
+                    "%-20s %-15s %-20s %-10.2f",
+                    player.getName(),
+                    player.getPosition(),
+                    player.getClub(),
+                    price
+            );
+
+            // Add the formatted details to the ListView
+            playersListView.getItems().add(playerDetails);
+            System.out.println("testing map " +playerPriceMap);
+        });
+    } else {
+        System.out.println("playersListView is null. Check FXML mapping.");
+    }
+}
 
 
     @FXML
