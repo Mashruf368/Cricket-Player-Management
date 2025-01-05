@@ -171,5 +171,20 @@ public class HelloController {
         }
     }
 
+    @FXML
+    private void opendetails()
+    {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("details.fxml"));
+            Parent root = loader.load();
+            DetailController detailController = new DetailController();
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

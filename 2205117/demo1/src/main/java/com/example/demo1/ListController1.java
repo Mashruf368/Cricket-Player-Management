@@ -25,17 +25,18 @@ public class ListController1 {
         playerListView.getItems().clear();
 
         // Set a monospaced font for better alignment
-        playerListView.setStyle("-fx-font-family: 'Courier New'; -fx-font-size: 16;");
+        playerListView.setStyle("-fx-font-family: 'Courier New'; -fx-font-size: 10;");
 
         // Define column widths with more space for Position and Jersey No
-        int nameWidth = 20;
-        int countryWidth = 15;
+        int nameWidth = 15;
+        int countryWidth = 14;
         int ageWidth = 5;
         int heightWidth = 8;
-        int clubWidth = 38;  // 38 spaces for Club name
-        int positionWidth = 15;  // Increased width for Position (Wicketkeeper longest)
-        int jerseyWidth = 18;  // Increased width for Jersey No (including 'Unavailable')
-        int salaryWidth = 15;
+        int clubWidth = 30;
+        int positionWidth = 12;
+        int jerseyWidth = 8;
+        int salaryWidth = 12;
+
 
         // Add header row
         StringBuilder header = new StringBuilder();
@@ -48,7 +49,7 @@ public class ListController1 {
                 .append(padRight("Jersey No", jerseyWidth))
                 .append(padRight("Salary", salaryWidth));
         playerListView.getItems().add(header.toString());
-        playerListView.setStyle(playerListView.getStyle() + "; -fx-font-weight: bold; -fx-font-size: 20;"); // Bold and larger size for the header
+        playerListView.setStyle(playerListView.getStyle() + "; -fx-font-weight: bold; -fx-font-size: 14;"); // Bold and larger size for the header
 
 
 

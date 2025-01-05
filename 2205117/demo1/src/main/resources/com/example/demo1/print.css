@@ -1,0 +1,74 @@
+/* Background image */
+.root {
+    -fx-background-image: url("guest1.jpg");
+    -fx-background-size: cover;
+    -fx-background-opacity: 0.68;
+}
+
+/* Title Text ("PLAYER FOUND!") */
+.text {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+/* Label Text Formatting */
+.text {
+    -fx-font-size: 18px;
+    -fx-font-weight: normal;
+    -fx-text-fill: white;
+}
+
+/* Style for all TextAreas (Light Blue Background) */
+.text-area {
+    -fx-background-color: #e0f7fa; /* Light Blue */
+    -fx-border-color: #0078d4; /* Blue border */
+    -fx-border-radius: 5px;
+    -fx-font-size: 18px;
+    -fx-text-fill: #333;
+}
+
+/* Focused TextArea (Darker blue border on focus) */
+.text-area:focused {
+    -fx-border-color: #0288d1;
+    -fx-background-color: #b3e5fc; /* Slightly darker blue */
+}
+
+/* Button Formatting */
+.button {
+    -fx-background-color: #ff4d4d;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 15px;
+    -fx-background-radius: 5px;
+}
+
+/* Button hover effect */
+.button:hover {
+    -fx-background-color: #ff1a1a;
+}
+
+/* Adjust button width and padding */
+.button {
+    -fx-min-width: 100px;
+    -fx-max-width: 100px;
+}
+
+/* Padding for general layout */
+.AnchorPane {
+    -fx-padding: 20px;
+}
+
+/* Make sure the text field labels are properly aligned */
+.Text {
+    -fx-font-size: 18px;
+    -fx-font-weight: normal;
+    -fx-text-fill: white;
+    -fx-underline: true;
+}
+
+/* Additional styling to give structure to the layout */
+.children {
+    -fx-spacing: 10px;
+}

@@ -1,0 +1,49 @@
+/* Style for the background image */
+AnchorPane {
+    -fx-background-size: cover;
+}
+
+/* Style for the welcome text */
+#welcomeText {
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 10px;
+    -fx-background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    -fx-background-radius: 15;
+    -fx-border-color: #d70a0a;
+    -fx-border-width: 2px;
+    -fx-border-radius: 15;
+}
+
+/* Style for the button */
+Button {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: #d70a0a; /* IPL-themed red */
+    -fx-background-radius: 25;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 25;
+    -fx-padding: 5 15 5 15; /* Top, Right, Bottom, Left */
+    -fx-cursor: hand;
+}
+
+/* Hover effect for the button */
+Button:hover {
+    -fx-background-color: #ff6666;
+    -fx-text-fill: black;
+}
+
+/* Focus effect for the button */
+Button:focused {
+    -fx-border-color: yellow;
+    -fx-background-color: #d70a0a;
+}
+
+/* Style for button press */
+Button:pressed {
+    -fx-background-color: darkred;
+    -fx-text-fill: white;
+}

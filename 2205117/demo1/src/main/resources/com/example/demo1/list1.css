@@ -1,0 +1,45 @@
+/* Background Image */
+.root {
+    -fx-background-image: url("guest1.jpg");
+    -fx-background-size: cover;
+    -fx-background-opacity: 0.8;
+}
+
+/* Label: Players found */
+.label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 10px;
+}
+
+/* ListView: Style the player list */
+#playerListView {
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+    -fx-border-radius: 10px;
+    -fx-border-color: #0078d4;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+    -fx-font-weight: normal;
+    -fx-text-fill: #333;
+}
+
+/* Button: Exit Button */
+.button {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-color: #ff4d4d;
+    -fx-text-fill: white;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 5px;
+}
+
+/* Adjusting the exit button hover effect */
+.button:hover {
+    -fx-background-color: #ff1a1a;
+}
+
+/* Additional padding and layout adjustments */
+.AnchorPane {
+    -fx-padding: 20px;
+}

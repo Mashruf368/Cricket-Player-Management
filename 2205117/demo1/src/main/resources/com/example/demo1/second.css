@@ -1,0 +1,36 @@
+/* General AnchorPane Styling */
+AnchorPane {
+    -fx-background-size: cover;
+}
+
+/* Button Styling */
+Button {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(to bottom, #4caf50, #2e7d32); /* Green gradient */
+    -fx-background-radius: 20;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-cursor: hand;
+    -fx-padding: 10;
+}
+
+/* Button Hover Effect */
+Button:hover {
+    -fx-background-color: linear-gradient(to bottom, #66bb6a, #388e3c);
+    -fx-text-fill: black;
+}
+
+/* Button Focus Effect */
+Button:focused {
+    -fx-border-color: yellow;
+    -fx-border-width: 3;
+}
+
+/* Button Pressed Effect */
+Button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #1b5e20, #4caf50);
+    -fx-text-fill: white;
+}

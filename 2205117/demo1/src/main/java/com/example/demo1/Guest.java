@@ -12,7 +12,7 @@ public class Guest extends Application {
     public void start(Stage stage) throws IOException {
         // Adjust the FXML file path
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("hello1.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 675, 370);
 //        stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();

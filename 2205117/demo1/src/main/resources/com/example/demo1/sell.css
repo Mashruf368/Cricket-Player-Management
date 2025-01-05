@@ -1,0 +1,86 @@
+/* Style for the overall AnchorPane background */
+AnchorPane {
+    -fx-background-color: lightgreen;
+}
+
+/* Style for the ListView */
+ListView {
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-padding: 5;
+    -fx-background-color: white;
+}
+
+/* Alternate row colors for ListView items */
+ListView .list-cell:odd {
+    -fx-background-color: lightblue;
+}
+
+ListView .list-cell:even {
+    -fx-background-color: lightgrey;
+}
+
+/* Style for buttons */
+Button {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: darkgreen;
+    -fx-background-radius: 15;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 15;
+    -fx-padding: 5 10 5 10; /* Top, Right, Bottom, Left */
+}
+
+/* Hover effect for buttons */
+Button:hover {
+    -fx-background-color: lightgreen;
+    -fx-text-fill: darkgreen;
+    -fx-border-color: darkgreen;
+}
+
+/* Style for the "Back" button */
+#exit {
+    -fx-background-color: #ff6666; /* Light red for distinctiveness */
+    -fx-text-fill: white;
+}
+
+#exit:hover {
+    -fx-background-color: #ff9999;
+    -fx-text-fill: darkred;
+}
+
+/* Style for TextField */
+TextField {
+    -fx-font-size: 14px;
+    -fx-border-color: darkgreen;
+    -fx-border-width: 2px;
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-padding: 3 5 3 5; /* Top, Right, Bottom, Left */
+}
+
+/* Hover effect for TextField */
+TextField:focused {
+    -fx-border-color: darkblue;
+    -fx-background-color: #e6f7ff; /* Light blue background for focus */
+}
+
+/* Style for Text */
+Text {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-text-fill: darkgreen;
+}
+
+/* Style for the "SHOW PLAYER DETAILS" button */
+Button#onShowPlayerDetails {
+    -fx-background-color: #0066cc; /* Blue for emphasis */
+    -fx-text-fill: white;
+}
+
+Button#onShowPlayerDetails:hover {
+    -fx-background-color: #66b3ff;
+    -fx-text-fill: darkblue;
+}

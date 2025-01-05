@@ -4,90 +4,100 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="600.0" prefWidth="850.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Searchclub">
-    <AnchorPane prefHeight="528.0" prefWidth="850.0">
-        <children>
-            <Text layoutX="31.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTER NAME OF CLUB:" wrappingWidth="354.0050735473633">
-                <font>
-                    <Font size="18.0" />
-                </font>
-            </Text>
-            <TextField fx:id="clubname" layoutX="31.0" layoutY="79.0" prefHeight="40.0" prefWidth="480.0">
-                <font>
-                    <Font size="18.0" />
-                </font>
-            </TextField>
-            <ComboBox fx:id="clubDropdown" layoutX="512.0" layoutY="79.0" prefWidth="2.0" promptText="" />
-            <Text layoutX="31.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLAYER WITH MAXIMUM SALARY:" wrappingWidth="480.00000000000006">
-                <font>
-                    <Font size="18.0" />
-                </font>
-            </Text>
-            <Text layoutX="31.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLAYER WITH MAXIMUM HEIGHT:" wrappingWidth="480.00000000000006">
-                <font>
-                    <Font size="18.0" />
-                </font>
-            </Text>
-            <Text layoutX="24.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL YEARLY SALARY OF CLUB:" wrappingWidth="480.00000000000006">
-                <font>
-                    <Font size="18.0" />
-                </font>
-            </Text>
-            <Button layoutX="399.0" layoutY="479.0" mnemonicParsing="false" onAction="#onExitClick" text="EXIT">
-                <font>
-                    <Font size="18.0" />
-                </font>
-            </Button>
-            <Button layoutX="705.0" layoutY="160.0" mnemonicParsing="false" onAction="#onmaxsalary" text="SEARCH">
-                <font>
-                    <Font name="System Bold" size="12.0" />
-                </font>
-            </Button>
-            <Label fx:id="errorLabel" alignment="CENTER" layoutX="300.0" layoutY="400.0" text="" textFill="red">
-                <font>
-                    <Font size="20.0" />
-                </font>
-            </Label>
+<AnchorPane prefHeight="462.0" prefWidth="851.0" stylesheets="@searchclub.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Searchclub">
+    <children>
+      <ImageView fitHeight="600.0" fitWidth="850.0" layoutX="1.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@guest1.jpg" />
+         </image>
+      </ImageView>
+        <!-- Title Text -->
+        <Text layoutX="31.0" layoutY="69.0" text="SEARCH CLUB INFORMATION" wrappingWidth="600.0">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
 
-            <Label fx:id="errorLabel2" alignment="CENTER" layoutX="500.0" layoutY="100.0" text="" textFill="red">
-                <font>
-                    <Font size="20.0" />
-                </font>
-            </Label>
+        <!-- Club Name -->
+        <Text layoutX="31.0" layoutY="120.0" text="ENTER NAME OF CLUB:" wrappingWidth="354.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <TextField fx:id="clubname" layoutX="31.0" layoutY="137.0" prefHeight="40.0" prefWidth="600.0" />
+        <ComboBox fx:id="clubDropdown" layoutX="631.0" layoutY="143.0" prefHeight="26.0" prefWidth="18.0" />
 
+        <!-- Maximum Salary -->
+        <Text layoutX="31.0" layoutY="233.0" text="PLAYER WITH MAXIMUM SALARY:" wrappingWidth="480.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Button layoutX="622.0" layoutY="201.0" mnemonicParsing="false" onAction="#onmaxsalary" text="SEARCH">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
 
+        <!-- Maximum Height -->
+        <Text layoutX="31.0" layoutY="282.0" text="PLAYER WITH MAXIMUM HEIGHT:" wrappingWidth="480.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Button layoutX="622.0" layoutY="250.0" mnemonicParsing="false" onAction="#onmaxheight" text="SEARCH">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
 
-            <Button layoutX="705.0" layoutY="221.0" mnemonicParsing="false" onAction="#onmaxheight" text="SEARCH">
-                <font>
-                    <Font name="System Bold" size="12.0" />
-                </font>
-            </Button>
-            <Button layoutX="705.0" layoutY="277.0" mnemonicParsing="false" onAction="#onmaxage" text="SEARCH">
-                <font>
-                    <Font name="System Bold" size="12.0" />
-                </font>
-            </Button>
-            <Text layoutX="31.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLAYER WITH MAXIMUM AGE:" wrappingWidth="480.00000000000006">
-                <font>
-                    <Font size="18.0" />
-                </font>
-            </Text>
-            <Button layoutX="705.0" layoutY="328.0" mnemonicParsing="false" onAction="#ontotalsalary" text="SEARCH">
-                <font>
-                    <Font name="System Bold" size="12.0" />
-                </font>
-            </Button>
+        <!-- Maximum Age -->
+        <Text layoutX="31.0" layoutY="323.0" text="PLAYER WITH MAXIMUM AGE:" wrappingWidth="480.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Button layoutX="622.0" layoutY="300.0" mnemonicParsing="false" onAction="#onmaxage" text="SEARCH">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
 
+        <!-- Total Yearly Salary -->
+        <Text layoutX="31.0" layoutY="367.0" text="TOTAL YEARLY SALARY OF CLUB:" wrappingWidth="480.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Button layoutX="622.0" layoutY="344.0" mnemonicParsing="false" onAction="#ontotalsalary" text="SEARCH">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
 
+        <!-- Error Labels -->
+        <Label fx:id="errorLabel" layoutX="31.0" layoutY="420.0" text="" textFill="red">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="errorLabel2" layoutX="31.0" layoutY="450.0" text="" textFill="red">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
 
-        </children>
-
-    </AnchorPane>
-
-    <Label fx:id="searchclubtext" />
-</VBox>
+        <!-- Exit Button -->
+        <Button layoutX="727.0" layoutY="412.0" mnemonicParsing="false" onAction="#onExitClick" text="EXIT">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>

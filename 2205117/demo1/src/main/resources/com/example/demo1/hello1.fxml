@@ -2,15 +2,22 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="370.0" prefWidth="524.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController1">
+<AnchorPane prefHeight="372.0" prefWidth="676.0" stylesheets="@hello1.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.HelloController1">
     <children>
-        <Label fx:id="welcomeText" layoutX="24.0" layoutY="26.0" prefHeight="66.0" prefWidth="481.0" text="WELCOME TO IPL PLAYER MANAGEMENT">
+      <ImageView fitHeight="443.0" fitWidth="682.0" layoutX="-1.0" layoutY="-4.0" opacity="0.79" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@guest1.jpg" />
+         </image>
+      </ImageView>
+        <Label fx:id="welcomeText" layoutX="94.0" layoutY="74.0" prefHeight="66.0" prefWidth="510.0" text="WELCOME TO IPL PLAYER DATABASE" textFill="#d70a0a">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="27.0" />
          </font></Label>
-        <Button layoutX="167.0" layoutY="172.0" onAction="#nextButton" prefHeight="26.0" prefWidth="189.0" text="LOGIN AS GUEST" />
+        <Button layoutX="257.0" layoutY="220.0" onAction="#nextButton" prefHeight="42.0" prefWidth="202.0" text="LOGIN AS GUEST" />
     </children>
 </AnchorPane>
