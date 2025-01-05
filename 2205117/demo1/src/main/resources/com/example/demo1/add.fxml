@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.AddPlayerController">
+    <!-- VBox for centering content -->
+    <VBox alignment="CENTER" layoutX="147.0" layoutY="64.0" prefHeight="471.0" prefWidth="598.0" spacing="20.0">
+        <!-- Player Information Labels and TextFields -->
+        <HBox spacing="10.0">
+            <Label prefHeight="27.0" prefWidth="138.0" text="Name:">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <TextField fx:id="nameField" layoutX="20.0" prefHeight="30.0" prefWidth="349.0">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </TextField>
+        </HBox>
+        <HBox prefHeight="30.0" prefWidth="556.0" spacing="10.0">
+            <Label prefHeight="27.0" prefWidth="137.0" text="Country:">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <TextField fx:id="countryField" layoutX="20.0" prefHeight="30.0" prefWidth="348.0">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </TextField>
+        </HBox>
+        <HBox spacing="10.0">
+            <Label prefHeight="27.0" prefWidth="135.0" text="Age:">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <TextField fx:id="ageField" layoutX="20.0" prefHeight="30.0" prefWidth="350.0">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </TextField>
+        </HBox>
+        <HBox spacing="10.0">
+            <Label prefHeight="27.0" prefWidth="136.0" text="Height:">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <TextField fx:id="heightField" layoutX="20.0" prefHeight="30.0" prefWidth="349.0">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </TextField>
+        </HBox>
+        <HBox prefHeight="30.0" prefWidth="619.0" spacing="10.0">
+            <Label prefHeight="27.0" prefWidth="137.0" text="Club:">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <TextField fx:id="clubField" layoutX="20.0" prefHeight="30.0" prefWidth="344.0">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </TextField>
+        </HBox>
+        <HBox spacing="10.0">
+            <Label prefHeight="27.0" prefWidth="135.0" text="Position:">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <TextField fx:id="positionField" layoutX="20.0" prefHeight="30.0" prefWidth="346.0">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </TextField>
+        </HBox>
+        <HBox prefHeight="30.0" prefWidth="584.0" spacing="10.0">
+            <Label prefHeight="27.0" prefWidth="134.0" text="Jersey Number:">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <TextField fx:id="jerseyField" layoutX="20.0" prefHeight="30.0" prefWidth="345.0">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </TextField>
+        </HBox>
+        <HBox spacing="10.0">
+            <Label prefHeight="27.0" prefWidth="134.0" text="Salary:">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+            <TextField fx:id="salaryField" layoutX="20.0" prefHeight="30.0" prefWidth="345.0">
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </TextField>
+        </HBox>
+
+        <!-- Add Player Button -->
+        <Button onAction="#handleAddPlayer" prefWidth="200.0" text="Add Player" />
+    </VBox>
+    <Text layoutX="150.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTER PLAYER DETAILS:" wrappingWidth="433.23045349121094">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Text>
+   <Button layoutX="756.0" layoutY="523.0" mnemonicParsing="false" onAction="#onExitClick" text="EXIT">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font>
+   </Button>
+</AnchorPane>

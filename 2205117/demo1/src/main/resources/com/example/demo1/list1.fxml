@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.control.Button?>
+<AnchorPane maxHeight="300.0" maxWidth="600.0" prefHeight="300.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.example.demo1.ListController1">
+    <ListView fx:id="playerListView" layoutX="10.0" layoutY="50.0" prefHeight="200.0" prefWidth="580.0" />
+    <Button text="Exit" layoutX="520.0" layoutY="260.0" onAction="#onExitClick" />
+</AnchorPane>

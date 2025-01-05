@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="850.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Searchplayer">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="338.9366943359373" />
+    <AnchorPane prefHeight="484.0" prefWidth="820.0">
+        <children>
+            <Text layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTER PLAYER NAME:" wrappingWidth="235.60508728027344">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Text>
+            <TextField fx:id="playername" layoutX="14.0" layoutY="63.0" prefHeight="40.0" prefWidth="310.0">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </TextField>
+            <Text layoutX="14.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTER PLAYER COUNTRY:" wrappingWidth="310.4">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Text>
+            <TextField fx:id="playercountry" layoutX="14.0" layoutY="163.0" prefHeight="40.0" prefWidth="310.0">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </TextField>
+            <Text layoutX="14.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTER CLUB:" wrappingWidth="310.4">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Text>
+            <TextField fx:id="playerclub" layoutX="14.0" layoutY="268.0" prefHeight="40.0" prefWidth="310.0">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </TextField>
+            <Text layoutX="474.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SEARCH BY SALARY:" wrappingWidth="286.00506591796875">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Text>
+            <TextField fx:id="minsalary" layoutX="474.0" layoutY="105.0">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </TextField>
+            <Text layoutX="474.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTER MIN SALARY:" wrappingWidth="223.20000000000005">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Text>
+            <Text layoutX="474.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTER MAXIMUM SALARY:" wrappingWidth="235.60508728027344">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Text>
+            <TextField fx:id="maxsalary" layoutX="474.0" layoutY="206.0">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </TextField>
+            <Text layoutX="474.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SEARCH BY POSITION:" wrappingWidth="223.20000000000005">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Text>
+            <TextField fx:id="playerposition" layoutX="474.0" layoutY="308.0" prefHeight="26.0" prefWidth="223.0">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </TextField>
+            <Button layoutX="350.0" layoutY="123.0" mnemonicParsing="false" onAction="#onBycountry" text="SEARCH">
+                <font>
+                    <Font name="System Bold" size="14.0" />
+                </font>
+            </Button>
+            <Button layoutX="697.0" layoutY="12.0" mnemonicParsing="false" onAction="#onBysalary" text="SEARCH">
+                <font>
+                    <Font name="System Bold" size="14.0" />
+                </font>
+            </Button>
+            <Button layoutX="710.0" layoutY="265.0" mnemonicParsing="false" onAction="#onPosition" text="SEARCH">
+                <font>
+                    <Font name="System Bold" size="14.0" />
+                </font>
+            </Button>
+            <Button layoutX="355.0" layoutY="14.0" mnemonicParsing="false" onAction="#onByname" text="SEARCH">
+                <font>
+                    <Font name="System Bold" size="14.0" />
+                </font>
+            </Button>
+            <Text layoutX="14.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SHOW COUNTRY WISE PLAYER COUNT:" wrappingWidth="327.60508728027344">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Text>
+            <Button layoutX="350.0" layoutY="327.0" mnemonicParsing="false" onAction="#oncountrycount" text="SHOW">
+                <font>
+                    <Font name="System Bold" size="14.0" />
+                </font>
+            </Button>
+         <Button layoutX="721.0" layoutY="396.0" mnemonicParsing="false" onAction="#onExitClick" prefHeight="30.0" prefWidth="63.0" text="EXIT" />
+        </children>
+    </AnchorPane>
+
+    <Label fx:id="searchplayertext" />
+    <Text strokeType="OUTSIDE" strokeWidth="0.0" />
+</VBox>

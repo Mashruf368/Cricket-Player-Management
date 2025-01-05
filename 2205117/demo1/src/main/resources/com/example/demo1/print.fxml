@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="886.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.PrintController">
+    <children>
+        <Text layoutX="62.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLAYER FOUND!" wrappingWidth="400.8406219482422">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Text>
+        <Text layoutX="50.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NAME:" wrappingWidth="400.8406219482422">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="50.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COUNTRY:" wrappingWidth="400.8406219482422">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="46.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AGE:" wrappingWidth="408.4050750732422">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="50.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HEIGHT:" wrappingWidth="400.8406219482422">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="50.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLUB:" wrappingWidth="400.8406219482422">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="46.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="POSITION:" wrappingWidth="400.8406219482422">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="46.0" layoutY="487.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JERSEY NUMBER:" wrappingWidth="400.8406219482422">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="50.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WEEKLY SALARY" wrappingWidth="400.8406219482422">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <TextArea fx:id="showname" editable="false" layoutX="315.0" layoutY="50.0" prefHeight="24.0" prefWidth="478.0">
+            <font>
+                <Font size="18.0" />
+            </font></TextArea>
+        <TextArea fx:id="showcountry" editable="false" layoutX="315.0" layoutY="110.0" prefHeight="38.0" prefWidth="478.0">
+            <font>
+                <Font size="18.0" />
+            </font></TextArea>
+        <TextArea fx:id="showage" editable="false" layoutX="315.0" layoutY="175.0" prefHeight="24.0" prefWidth="478.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextArea>
+        <TextArea fx:id="showheight" editable="false" layoutX="315.0" layoutY="243.0" prefHeight="24.0" prefWidth="478.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextArea>
+        <TextArea fx:id="showclub" editable="false" layoutX="315.0" layoutY="311.0" prefHeight="24.0" prefWidth="478.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextArea>
+        <TextArea fx:id="showposition" editable="false" layoutX="315.0" layoutY="378.0" prefHeight="24.0" prefWidth="478.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextArea>
+        <TextArea fx:id="showjersey" editable="false" layoutX="315.0" layoutY="451.0" prefHeight="24.0" prefWidth="478.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextArea>
+        <TextArea fx:id="showsalary" editable="false" layoutX="315.0" layoutY="524.0" prefHeight="24.0" prefWidth="478.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextArea>
+      <Button layoutX="808.0" layoutY="596.0" mnemonicParsing="false" onAction="#onExitClick" text="EXIT">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>

@@ -36,7 +36,7 @@ public class Save_players {
     try{
         //BufferedReader me = new BufferedReader(new FileReader("players.txt"));
         BufferedReader me = new BufferedReader(new InputStreamReader(
-        Main.class.getResourceAsStream("D:/test1/src/main/java/com/example/test1/players.txt")
+        Main.class.getResourceAsStream("C:/Users/Hp/Downloads/2205117 (6)/2205117/demo1/src/main/java/com/example/demo1/Database/players.txt")
         )   );
         String s;
         
@@ -130,6 +130,7 @@ public class Save_players {
             me.close();
         } catch(Exception ex){
             System.out.println("error 1");
+        ex.printStackTrace();
         }
         //initial has old players
         //playerlist has new players
