@@ -25,6 +25,7 @@ public class HelloController {
     private String username;
     private SocketWrapper socketWrapper;
     private Map<Player,Double> lastlist = new HashMap<>();
+    private Map<Player,Double> another = new HashMap<>();
 
     public void setmap(Map<Player,Double> a)
     {
@@ -41,6 +42,34 @@ public class HelloController {
         this.playerList = playerList;
         System.out.println("Player list set for " + username);
     }
+
+
+    public void setPlayerList() {
+        try{
+            Player dummyPlayer = new Player(); // Replace with actual Player object
+            Request request = new Request("PLAYERLIST", dummyPlayer, 0.0); // Use 0.0 for price if irrelevant
+            socketWrapper.write(request);
+            Object response = socketWrapper.read();
+            if (response instanceof ArrayList<?>) {
+                ArrayList<?> tempList = (ArrayList<?>) response;
+
+                // Verify the elements in the list are of type Player
+                if (!tempList.isEmpty() && tempList.get(0) instanceof Player) {
+                    this.playerList = (ArrayList<Player>) tempList; // Safe cast
+                } else {
+                    System.err.println("Received an ArrayList, but elements are not of type Player.");
+                    this.playerList = new ArrayList<>(); // Initialize with an empty list
+                }
+            } else {
+                System.err.println("Unexpected response type: " + (response != null ? response.getClass().getName() : "null"));
+                this.playerList = new ArrayList<>(); // Initialize with an empty list
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void setSocketWrapper(SocketWrapper socketWrapper) {
         this.socketWrapper = socketWrapper;
     }
@@ -55,6 +84,8 @@ public class HelloController {
 
             ListController listController = loader.getController();
             listController.setPlayerList((List<Player>) playerList);
+            listController.setusername(username);
+            listController.setSocketWrapper(socketWrapper);
 
             // Create a new scene and open the new window
             Stage stage = (Stage) usernameText.getScene().getWindow();
@@ -83,10 +114,19 @@ public class HelloController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("sell.fxml"));
             //loader.setController(new SellController());
             Parent root = loader.load();
-
+            another = File.read();
+            //another.entrySet().removeIf(entry -> entry.getKey().getClub().equals(username));
+            System.out.println(another);
+            ArrayList<Player> filteredPlayerList = new ArrayList<>();
+            for (Player player : playerList) {
+                if (!another.containsKey(player)) {
+                    filteredPlayerList.add(player);
+                }
+            }
+            //System.out.println(filteredPlayerList);
             // Pass the player list to the SellController
             SellController sellController = loader.getController();
-            sellController.setPlayerList(playerList);
+            sellController.setPlayerList(filteredPlayerList);
             sellController.setSocketWrapper(socketWrapper);
             sellController.setUsername(username);
 

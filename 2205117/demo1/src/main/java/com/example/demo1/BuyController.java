@@ -164,7 +164,8 @@ public void setPlayerPriceMap1()
             helloController.setUsername(username); // Example of setting username
             helloController.setmap(playerPriceMap);
             helloController.setSocketWrapper(socketWrapper); // Passing socket wrapper
-            helloController.setPlayerList((ArrayList<Player>) playerList);
+            //helloController.setPlayerList((ArrayList<Player>) playerList);
+            helloController.setPlayerList();
             System.out.println("loaded variables");
 
             // Set the new scene

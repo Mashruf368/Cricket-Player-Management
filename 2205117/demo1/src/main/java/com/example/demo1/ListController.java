@@ -27,6 +27,11 @@ public class ListController {
     public void setSocketWrapper(SocketWrapper socketWrapper) {
         this.socketWrapper = socketWrapper;
     }
+    public void setusername(String a)
+    {
+        this.username = a;
+    }
+
 
     @FXML
     private ListView<String> playersListView; // ListView to display formatted player details

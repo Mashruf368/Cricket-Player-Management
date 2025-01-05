@@ -153,6 +153,8 @@ public class Server {
                 String command = request.getCommand();
                 Object data = request.getData();
                 double offerPrice = request.getOfferPrice();
+                System.out.println("Received command: " + command);
+
 
                 switch (command) {
                     case "TRANSFER":
@@ -160,6 +162,9 @@ public class Server {
                         break;
                     case "BUY":
                         handleBuy((Player) data, username,offerPrice,socketWrapper);
+                        break;
+                    case "PLAYERLIST":
+                        handlePlayerList(username,socketWrapper);
                         break;
                     default:
                         System.out.println("Unknown command: " + command);
@@ -209,6 +214,18 @@ public class Server {
         System.out.println("Player purchased successfully.");
         socketWrapper.write("DONE");
     }
+    }
+    public static ArrayList<Player> handlePlayerList(String username,SocketWrapper socketWrapper)
+    {
+        System.out.println("request method reached in server");
+        PlayerList.playerList = new ArrayList<Player>();
+        PlayerList.makelist();
+        Club ekhn = new Club(username);
+        ArrayList<Player> eta = new ArrayList<>(ekhn.formclub());
+        System.out.println(eta);
+        socketWrapper.write(eta);
+        return eta;
+
     }
 }
 

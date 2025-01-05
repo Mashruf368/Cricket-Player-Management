@@ -6,6 +6,7 @@ public class Request implements Serializable {
     private String command; // e.g., "TRANSFER", "BUY"
     private Object data;    // Associated data (e.g., a Player object)
     private double offerPrice;
+    private String username;
 
     public Request(String command, Object data, double offerPrice) {
         this.command = command;
