@@ -81,6 +81,7 @@ public void setPlayerPriceMap(Map<Player, Double> playerPriceMap) {
 public void setPlayerPriceMap1()
 {
     this.playerPriceMap = File.read();
+    playerPriceMap.entrySet().removeIf(entry -> entry.getKey().getClub().equals(username));
     if (playersListView != null) {
         playersListView.getItems().clear(); // Clear existing items
 
@@ -137,6 +138,8 @@ public void setPlayerPriceMap1()
                     purchaseStatusLabel.setText("Purchase successful!");
                     purchaseStatusLabel.setStyle("-fx-text-fill: green;");
                 }
+                else if(a.equals("NOT_AVAILABLE")) {purchaseStatusLabel.setText("Purchase failed: Player unavailable.");
+                    purchaseStatusLabel.setStyle("-fx-text-fill: red;");}
                 else
                 {
                     System.out.println("failed");

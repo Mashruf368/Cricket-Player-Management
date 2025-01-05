@@ -1,0 +1,36 @@
+/* General styling for the AnchorPane background */
+.root,.anchor-pane {
+    -fx-background-color: #f5f5f5; /* Light gray background */
+}
+
+/* Styling for the Welcome Text area (club name) */
+#welcomeText {
+    -fx-background-color: #003366; /* Dark Navy Blue background */
+    -fx-text-fill: white; /* White text */
+    -fx-padding: 10;
+}
+
+/* Thin white line under the welcome text */
+.region {
+    -fx-background-color: white;
+    -fx-min-height: 1px;
+}
+
+/* Styling for the Buttons */
+.button {
+    -fx-background-color: #4caf50; /* Green background */
+    -fx-text-fill: white; /* White text */
+    -fx-font-size: 14px;
+    -fx-background-radius: 15; /* Rounded button */
+    -fx-padding: 5 15; /* Add padding */
+    -fx-cursor: hand; /* Pointer cursor */
+}
+
+.button:hover {
+    -fx-background-color: #45a049; /* Slightly darker green on hover */
+}
+
+/* Styling for the background */
+.anchor-pane {
+    -fx-background-color: #f0f0f0; /* Light gray background for the rest */
+}

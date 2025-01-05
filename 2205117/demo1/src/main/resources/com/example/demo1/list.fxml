@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.Button?>
-<AnchorPane fx:id="back" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.ListController">
+<AnchorPane fx:id="back" prefHeight="400.0" prefWidth="800.0" stylesheets="@list.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.ListController">
     <!-- Title at the top -->
-    <Text fx:id="welcomeText" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="MY PLAYERS" wrappingWidth="286.8577880859375" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="20" />
+    <Text fx:id="welcomeText" fill="#ae3434" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="MY PLAYERS" wrappingWidth="286.8577880859375" AnchorPane.leftAnchor="20" AnchorPane.topAnchor="20" />
 
     <!-- ListView for displaying player details -->
-    <Button fx:id="exit" layoutX="528.0" layoutY="353.0" mnemonicParsing="false" onAction="#onbackbutton" text="BACK" />
-    <ListView fx:id="playersListView" layoutX="20" layoutY="60" prefHeight="300.0" prefWidth="560.0" />
+    <Button fx:id="exit" layoutX="734.0" layoutY="360.0" mnemonicParsing="false" onAction="#onbackbutton" text="BACK" />
+    <ListView fx:id="playersListView" layoutX="20" layoutY="60" prefHeight="287.0" prefWidth="760.0" />
 </AnchorPane>

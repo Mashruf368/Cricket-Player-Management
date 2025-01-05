@@ -1,0 +1,41 @@
+/* Style for the overall AnchorPane background */
+#back {
+    -fx-background-color: lightgreen;
+}
+
+/* Style for the ListView */
+#playersListView {
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-padding: 5;
+    -fx-background-color: white;
+}
+
+/* Alternate row colors */
+#playersListView .list-cell:odd {
+    -fx-background-color: white;
+}
+
+#playersListView .list-cell:even {
+    -fx-background-color: lightblue;
+}
+
+/* Style for the Back button */
+#exit {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: darkgreen;
+    -fx-background-radius: 15;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 15;
+    -fx-padding: 5 10 5 10; /* Top, Right, Bottom, Left */
+}
+
+/* Hover effect for the Back button */
+#exit:hover {
+    -fx-background-color: lightgreen;
+    -fx-text-fill: darkgreen;
+    -fx-border-color: darkgreen;
+}

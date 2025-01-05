@@ -190,6 +190,12 @@ public class Server {
         String dest = username;
 
         if (club_details.get(dest) < offerprice) socketWrapper.write("FAIL");
+        Map<Player, Double> transferlist = File.read();
+        if (!transferlist.containsKey(player)) {
+            System.out.println("Player not available for purchase in transfer list: " + player);
+            socketWrapper.write("NOT_AVAILABLE");
+            return;
+        }
         else {
 
 
@@ -202,7 +208,7 @@ public class Server {
         }
         //System.out.println(PlayerList.playerList);
         PlayerList.save((ArrayList<Player>) PlayerList.playerList);
-        Map<Player, Double> transferlist = File.read();
+
         transferlist.remove(player);
         System.out.println(transferlist);
         File.write(transferlist);

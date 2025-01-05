@@ -34,8 +34,8 @@ public class HelloController {
 
     public void setUsername(String username) {
         this.username = username;
-        welcomeText.setText("Welcome to the club");
-        usernameText.setText(username);
+        welcomeText.setText("Welcome to " + username);
+        //usernameText.setText(username);
     }
 
     public void setPlayerList(ArrayList<Player> playerList) {

@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import com.example.demo1.SocketWrapper;
 
@@ -23,6 +25,11 @@ public class LoginController {
     private PasswordField passwordField;
     @FXML
     private Label statusLabel;
+
+    @FXML
+    ImageView image;
+
+    Image myimage = new Image(getClass().getResourceAsStream("bgnew.jpg"));
 
     private static final String SERVER_ADDRESS = "localhost";
     private static final int SERVER_PORT = 12345;

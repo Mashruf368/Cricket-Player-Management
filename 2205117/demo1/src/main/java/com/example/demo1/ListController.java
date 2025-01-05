@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import com.example.demo1.Database.Player;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -48,6 +50,7 @@ public class ListController {
         // Populate the ListView with formatted player data
         if (playersListView != null) {
             playersListView.getItems().clear(); // Clear existing items
+            playersListView.setStyle("-fx-font-family: 'Consolas'; -fx-font-size: 12;");
 
             // Add column headers
             String header = String.format("%-25s %-18s %-5s %-8s %-18s %-10s %-10s",
