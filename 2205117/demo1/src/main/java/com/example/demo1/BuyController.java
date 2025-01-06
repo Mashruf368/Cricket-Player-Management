@@ -54,7 +54,7 @@ public class BuyController {
 
 public void setPlayerPriceMap(Map<Player, Double> playerPriceMap) {
     this.playerPriceMap = playerPriceMap;
-
+    System.out.println("in buy controller " + this.playerPriceMap);
     // Populate the ListView with all entries
     if (playersListView != null) {
         playersListView.getItems().clear(); // Clear existing items

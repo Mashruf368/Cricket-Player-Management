@@ -135,6 +135,17 @@ public class Server {
                 //socketWrapper.close();
             } catch (IOException e) {
                 e.printStackTrace();
+            }finally {
+                try {
+                    if (socketWrapper != null) {
+                        socketWrapper.close();
+                    }
+                    if (socket != null && !socket.isClosed()) {
+                        socket.close(); // Close the socket when done
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -145,35 +156,49 @@ public class Server {
     }
 
     private static void handleClientRequests(SocketWrapper socketWrapper, String username) {
-        while (true) {
-            // Read the incoming request
-            Object receivedObject = socketWrapper.read();
-            if (receivedObject instanceof Request) {
-                Request request = (Request) receivedObject;
-                String command = request.getCommand();
-                Object data = request.getData();
-                double offerPrice = request.getOfferPrice();
-                System.out.println("Received command: " + command);
+        try{
+            while (true) {
+                // Read the incoming request
+                Object receivedObject = socketWrapper.read();
+                if (receivedObject instanceof Request) {
+                    Request request = (Request) receivedObject;
+                    String command = request.getCommand();
+                    Object data = request.getData();
+                    double offerPrice = request.getOfferPrice();
+                    System.out.println("Received command: " + command);
 
 
-                switch (command) {
-                    case "TRANSFER":
-                        handleTransfer((Player) data, username,offerPrice);
-                        break;
-                    case "BUY":
-                        handleBuy((Player) data, username,offerPrice,socketWrapper);
-                        break;
-                    case "PLAYERLIST":
-                        handlePlayerList(username,socketWrapper);
-                        break;
-                    default:
-                        System.out.println("Unknown command: " + command);
+                    switch (command) {
+                        case "TRANSFER":
+                            handleTransfer((Player) data, username, offerPrice);
+                            break;
+                        case "BUY":
+                            handleBuy((Player) data, username, offerPrice, socketWrapper);
+                            break;
+                        case "PLAYERLIST":
+                            handlePlayerList(username, socketWrapper);
+                            break;
+                        default:
+                            System.out.println("Unknown command: " + command);
+                    }
+                } else {
+                    System.out.println("Invalid object received: " + receivedObject);
+                    break;
                 }
-            } else {
-                System.out.println("Invalid object received: " + receivedObject);
-                break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if (socketWrapper != null) {
+                    socketWrapper.close();
+                    System.out.println("closing socketwrapper");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
+
     }
 
     private static void handleTransfer(Player player, String username,double offerprice) {
@@ -196,7 +221,7 @@ public class Server {
             socketWrapper.write("NOT_AVAILABLE");
             return;
         }
-        else {
+
 
 
         for (Player p : PlayerList.playerList) {
@@ -219,7 +244,7 @@ public class Server {
 
         System.out.println("Player purchased successfully.");
         socketWrapper.write("DONE");
-    }
+
     }
     public static ArrayList<Player> handlePlayerList(String username,SocketWrapper socketWrapper)
     {

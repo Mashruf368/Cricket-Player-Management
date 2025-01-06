@@ -78,12 +78,33 @@ public class HelloController {
     private void showPlayers() {
 
         try {
+
+            Player dummyPlayer = new Player(); // Replace with actual Player object if needed
+            Request request = new Request("PLAYERLIST", dummyPlayer, 0.0); // Use 0.0 for price if irrelevant
+            socketWrapper.write(request); // Send the request to the server
+
+            // Read the response from the server
+            Object response = socketWrapper.read();
+            ArrayList<Player> newPlayerList = new ArrayList<>();
+            if (response instanceof ArrayList<?>) {
+                ArrayList<?> tempList = (ArrayList<?>) response;
+
+                if (!tempList.isEmpty() && tempList.get(0) instanceof Player) {
+                    newPlayerList = (ArrayList<Player>) tempList; // Safe cast
+                } else {
+                    System.err.println("Received an ArrayList, but elements are not of type Player.");
+                }
+            } else {
+                System.err.println("Unexpected response type: " + (response != null ? response.getClass().getName() : "null"));
+            }
+
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("list.fxml"));
             Parent root = loader.load();
 
 
             ListController listController = loader.getController();
-            listController.setPlayerList((List<Player>) playerList);
+            listController.setPlayerList(newPlayerList);
             listController.setusername(username);
             listController.setSocketWrapper(socketWrapper);
 
@@ -150,6 +171,7 @@ public class HelloController {
             // Pass the player list to the BuyController
 
             lastlist = File.read();
+            System.out.println("in hello controller " + lastlist);
 
             lastlist.entrySet().removeIf(entry -> entry.getKey().getClub().equals(username));
 

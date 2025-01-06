@@ -1,9 +1,9 @@
-Mumbai Indians,11987656815.00
-Punjab Kings,12345490.00
-Delhi Capitals,34000026454.00
-Gujarat Titans,33999999767.00
+Mumbai Indians,11987656849.00
+Punjab Kings,12346709.00
+Delhi Capitals,34000026121.00
+Gujarat Titans,33999999778.00
 Lucknow Super Giants,34000000000.00
-Rajasthan Royals,34000000000.00
-Kolkata Knight Riders,34000083555.00
+Rajasthan Royals,33999999334.00
+Kolkata Knight Riders,34000083290.00
 Royal Challengers Bangalore,33999887953.00
 Chennai Super Kings,34000000000.00
