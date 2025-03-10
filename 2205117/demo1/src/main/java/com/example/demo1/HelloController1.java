@@ -20,7 +20,7 @@ public class HelloController1 {
     protected void nextButton(){
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("second1.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 750, 420);
+            Scene scene = new Scene(fxmlLoader.load(), 760, 460);
             //Stage stage = new Stage();
             Stage currentstage = (Stage) welcomeText.getScene().getWindow();
 //            stage.setTitle("SECOND WINDOW");

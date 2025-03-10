@@ -13,7 +13,7 @@
 
 /* Alternate row colors */
 #playersListView .list-cell:odd {
-    -fx-background-color: white;
+    -fx-background-color: lightgrey;
 }
 
 #playersListView .list-cell:even {

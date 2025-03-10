@@ -25,32 +25,26 @@ public class ListController1 {
         playerListView.getItems().clear();
 
         // Set a monospaced font for better alignment
-        playerListView.setStyle("-fx-font-family: 'Courier New'; -fx-font-size: 10;");
+        playerListView.setStyle("-fx-font-family: 'Consolas'; -fx-font-size: 12;");
+        String header = String.format("%-25s %-18s %-5s %-8s %-30s %-18s %-10s %-10s",
+                "Name", "Country", "Age", "Height", "Club", "Position", "Jersey No.", "Salary");
+        playerListView.getItems().add(header);
 
         // Define column widths with more space for Position and Jersey No
-        int nameWidth = 15;
-        int countryWidth = 14;
-        int ageWidth = 5;
-        int heightWidth = 8;
-        int clubWidth = 30;
-        int positionWidth = 12;
-        int jerseyWidth = 8;
-        int salaryWidth = 12;
 
 
         // Add header row
-        StringBuilder header = new StringBuilder();
-        header.append(padRight("Name", nameWidth))
-                .append(padRight("Country", countryWidth))
-                .append(padRight("Age", ageWidth))
-                .append(padRight("Height", heightWidth))
-                .append(padRight("Club", clubWidth))
-                .append(padRight("Position", positionWidth))
-                .append(padRight("Jersey No", jerseyWidth))
-                .append(padRight("Salary", salaryWidth));
-        playerListView.getItems().add(header.toString());
-        playerListView.setStyle(playerListView.getStyle() + "; -fx-font-weight: bold; -fx-font-size: 14;"); // Bold and larger size for the header
-
+//        StringBuilder header = new StringBuilder();
+//        header.append(padRight("Name", nameWidth))
+//                .append(padRight("Country", countryWidth))
+//                .append(padRight("Age", ageWidth))
+//                .append(padRight("Height", heightWidth))
+//                .append(padRight("Club", clubWidth))
+//                .append(padRight("Position", positionWidth))
+//                .append(padRight("Jersey No", jerseyWidth))
+//                .append(padRight("Salary", salaryWidth));
+//        playerListView.getItems().add(header.toString());
+        playerListView.setStyle(playerListView.getStyle() + "; -fx-font-weight: bold; -fx-font-size: 12;"); // Bold and larger size for the header
 
 
         // Add a separator line
@@ -58,19 +52,19 @@ public class ListController1 {
 
         // Add player rows
         for (Player player : players) {
-            StringBuilder row = new StringBuilder();
-            row.append(padRight(player.getName() != null ? player.getName() : "N/A", nameWidth))
-                    .append(padRight(player.getCountry() != null ? player.getCountry() : "N/A", countryWidth))
-                    .append(padRight(String.valueOf(player.getAge()), ageWidth))
-                    .append(padRight(String.format("%.2f", player.getHeight()), heightWidth))
-                    .append(padRight(player.getClub() != null ? player.getClub() : "N/A", clubWidth))
-                    .append(padRight(player.getPosition() != null ? player.getPosition() : "N/A", positionWidth))
-                    .append(padRight(player.getJersey_no() != 0 ? String.valueOf(player.getJersey_no()) : "Unavailable", jerseyWidth))
-                    .append(padRight(String.format("%,d USD", player.getSalary()), salaryWidth));
-            playerListView.getItems().add(row.toString());
-        }
+            String playerData = String.format("%-25s %-18s %-5d %-8.2f %-30s %-18s %-10d %-10d",
+                    player.getName(),
+                    player.getCountry(),
+                    player.getAge(),
+                    player.getHeight(),
+                    player.getClub(),
+                    player.getPosition(),
+                    player.getJersey_no(),
+                    player.getSalary());
+            playerListView.getItems().add(playerData);
 
-        prev = a;
+            prev = a;
+        }
     }
 
     // Helper method to pad strings to a fixed width

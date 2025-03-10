@@ -208,5 +208,10 @@ public class HelloController {
         }
     }
 
+    @FXML
+    private void clubDetails() {
+        System.out.println("Club budget is 6969");
+    }
+
 
 }

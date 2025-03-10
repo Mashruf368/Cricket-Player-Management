@@ -1,0 +1,2 @@
+rafin,bangladesh,23,1.10,Kolkata Knight Riders,batsman,99,1234321,224466.00
+Ishan Kishan,India,26,1.68,Mumbai Indians,Wicketkeeper,23,20000000,2000.00

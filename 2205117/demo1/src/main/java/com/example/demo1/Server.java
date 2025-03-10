@@ -215,35 +215,36 @@ public class Server {
         String dest = username;
 
         if (club_details.get(dest) < offerprice) socketWrapper.write("FAIL");
-        Map<Player, Double> transferlist = File.read();
-        if (!transferlist.containsKey(player)) {
-            System.out.println("Player not available for purchase in transfer list: " + player);
-            socketWrapper.write("NOT_AVAILABLE");
-            return;
-        }
-
-
-
-        for (Player p : PlayerList.playerList) {
-            if (p.getName().equals(player.getName())) {
-                source = p.getClub();
-                p.setClub(username);
+        else {
+            Map<Player, Double> transferlist = File.read();
+            if (!transferlist.containsKey(player)) {
+                System.out.println("Player not available for purchase in transfer list: " + player);
+                socketWrapper.write("NOT_AVAILABLE");
+                return;
             }
-            //System.out.println(p);
+
+
+            for (Player p : PlayerList.playerList) {
+                if (p.getName().equals(player.getName())) {
+                    source = p.getClub();
+                    p.setClub(username);
+                }
+                //System.out.println(p);
+            }
+            //System.out.println(PlayerList.playerList);
+            PlayerList.save((ArrayList<Player>) PlayerList.playerList);
+
+            transferlist.remove(player);
+            System.out.println(transferlist);
+            File.write(transferlist);
+            club_details.put(source, club_details.get(source) + offerprice);
+            club_details.put(dest, club_details.get(dest) - offerprice);
+            File.writeclub(club_details);
+
+
+            System.out.println("Player purchased successfully.");
+            socketWrapper.write("DONE");
         }
-        //System.out.println(PlayerList.playerList);
-        PlayerList.save((ArrayList<Player>) PlayerList.playerList);
-
-        transferlist.remove(player);
-        System.out.println(transferlist);
-        File.write(transferlist);
-        club_details.put(source, club_details.get(source) + offerprice);
-        club_details.put(dest, club_details.get(dest) - offerprice);
-        File.writeclub(club_details);
-
-
-        System.out.println("Player purchased successfully.");
-        socketWrapper.write("DONE");
 
     }
     public static ArrayList<Player> handlePlayerList(String username,SocketWrapper socketWrapper)

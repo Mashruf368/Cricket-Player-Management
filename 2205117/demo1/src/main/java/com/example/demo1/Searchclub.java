@@ -77,7 +77,7 @@ public class Searchclub {
 
             // Create the scene with the list view and set it to the current stage
             Stage currentStage = (Stage) clubname.getScene().getWindow();
-            Scene scene = new Scene(root, 1000, 600);
+            Scene scene = new Scene(root, 960, 600);
             currentStage.setScene(scene);
             currentStage.setTitle("Player List");
         } catch (Exception e) {
@@ -121,7 +121,7 @@ public class Searchclub {
 
             // Create the scene with the list view and set it to the current stage
             Stage currentStage = (Stage) clubname.getScene().getWindow();
-            Scene scene = new Scene(root, 1000, 600);
+            Scene scene = new Scene(root, 860, 600);
             currentStage.setScene(scene);
             currentStage.setTitle("Player List");
         } catch (Exception e) {
@@ -161,7 +161,7 @@ public class Searchclub {
 
             // Create the scene with the list view and set it to the current stage
             Stage currentStage = (Stage) clubname.getScene().getWindow();
-            Scene scene = new Scene(root, 1000, 600);
+            Scene scene = new Scene(root, 860, 600);
             currentStage.setScene(scene);
             currentStage.setTitle("Player List");
         } catch (Exception e) {
@@ -185,6 +185,7 @@ public class Searchclub {
 
         long d = team.total_yearly_salary();
         System.out.println(d);
+        errorLabel.setStyle("-fx-font-size: 24px; -fx-text-fill: black;");
 
         errorLabel.setText("The total salary of your club is " + d + "!");
 

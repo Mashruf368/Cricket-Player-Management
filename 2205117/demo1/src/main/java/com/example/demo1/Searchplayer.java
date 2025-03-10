@@ -112,7 +112,7 @@ public class Searchplayer {
 
             // Create the scene with the list view and set it to the current stage
             Stage currentStage = (Stage) searchplayertext.getScene().getWindow();
-            Scene scene = new Scene(root, 800, 400);
+            Scene scene = new Scene(root, 960, 400);
             currentStage.setScene(scene);
             currentStage.setTitle("Player List");
         } catch (Exception e) {
@@ -152,7 +152,7 @@ public class Searchplayer {
 
             // Create the scene with the list view and set it to the current stage
             Stage currentStage = (Stage) searchplayertext.getScene().getWindow();
-            Scene scene = new Scene(root, 1000, 600);
+            Scene scene = new Scene(root, 860, 600);
             currentStage.setScene(scene);
             currentStage.setTitle("Player List");
         } catch (Exception e) {
@@ -190,7 +190,7 @@ public class Searchplayer {
 
             // Create the scene with the list view and set it to the current stage
             Stage currentStage = (Stage) searchplayertext.getScene().getWindow();
-            Scene scene = new Scene(root, 1000, 600);
+            Scene scene = new Scene(root, 920, 400);
             currentStage.setScene(scene);
             currentStage.setTitle("Player List");
         } catch (Exception e) {

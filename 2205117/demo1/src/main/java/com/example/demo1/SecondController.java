@@ -30,7 +30,7 @@ public class SecondController {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Search_player.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 810, 460);
             //Stage stage = new Stage();
             Stage currentstage = (Stage) secondtext.getScene().getWindow();
 //            stage.setTitle("SECOND WINDOW");
@@ -49,7 +49,7 @@ public class SecondController {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Search_club.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 810, 460);
             //Stage stage = new Stage();
             Stage currentstage = (Stage) secondtext.getScene().getWindow();
 //            stage.setTitle("SECOND WINDOW");
@@ -68,7 +68,7 @@ public class SecondController {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("add.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 800, 540);
             //Stage stage = new Stage();
             Stage currentstage = (Stage) secondtext.getScene().getWindow();
 //            stage.setTitle("SECOND WINDOW");
